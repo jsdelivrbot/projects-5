@@ -1,0 +1,93 @@
+.chartTitle{
+    font-weight: bold;
+    font-size: 14px;
+    position: relative;
+    top: 100px;
+}
+.bar {
+    fill: rgba(184, 185, 185, 0.87);
+    &:hover {
+        fill: brown;
+    }
+}
+.axisLabel{
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.ticks {
+    font: 10px sans-serif;
+}
+
+.track,
+.track-inset,
+.track-overlay {
+    stroke-linecap: round;
+}
+$trackStroke: 8px;
+.track {
+    stroke: #000;
+    stroke-opacity: 0.3;
+    stroke-width: $trackStroke;
+}
+
+.track-inset {
+    stroke: #ddd;
+    stroke-width: $trackStroke - 2;
+}
+
+.track-overlay {
+    pointer-events: stroke;
+    stroke-width: 50px;
+    cursor: ew-resize;
+}
+
+.handle {
+    /*53abaf*/
+    fill: #53abaf;
+    stroke: #000;
+    stroke-opacity: 0.5;
+    stroke-width: 1.25px;
+    cursor: ew-resize;
+    user-select: none;
+    pointer-events: none;
+}
+
+.line {
+    fill: white;
+    stroke: black;
+    stroke-width: 2px;
+}
+
+.grid {
+    line {
+        stroke: white;
+        stroke-opacity: 0.7;
+        shape-rendering: crispEdges;
+    }
+    path {
+        stroke-width: 0;
+    }
+}
+.g-parameter-input{
+    position: relative;
+    left: -230px;
+    display: inline;
+    min-width: 160px;
+    input{
+        padding: 4px 0;
+        width: 40px;
+        margin: auto;
+
+    }
+}
+.g-parameter-tip {
+    z-index: 1;
+    pointer-events: none;
+    position: absolute;
+    left: 50%;
+    text-anchor: middle;
+    path {
+        fill: hsl(69, 91%, 44%);
+    }
+}

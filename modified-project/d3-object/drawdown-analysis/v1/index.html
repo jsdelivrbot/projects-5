@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Drawdown Analysis</title>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<style type="text/css">
+
+	@font-face {
+	            font-family: "MyFont";
+	            src: url('fonts/PTF55F.ttf') format("truetype");
+	        }
+	@font-face{
+	    font-family: "graph";
+	    src: url('fonts/NotoSans-Italic.ttf') format("truetype");
+	}
+
+.wrapper{
+	width:1000px;
+	height:600px;
+	border:1px solid #ddd;
+	margin:0 auto;
+	font-family:'MyFont', serif;
+	margin-bottom:30px;
+}
+.wrapper h2{
+	text-align:center;
+	border-bottom:1px solid #ddd;
+	padding-bottom:10px;
+	margin-top:10px;
+	}
+.menu{
+	width:1000px;
+	text-align:center;
+	margin:10px auto 20px;
+	
+	}
+.menu a{
+	background:#09C;
+	text-decoration:none;
+	padding:5px 15px;
+	background-color: #B4CCD9;
+	color:#000;}
+</style>
+</head>
+
+<body>
+<div class="menu">
+	<a  style="color: #fff; background-color: #0F2747;" href="index.html">S&P 500</a>
+    <a href="bristolgate.html">Bristol Gate</a>
+</div>
+<div class="wrapper">
+	<h2>S&P 500 Drawdown Analysis</h2>
+	<svg id="snp" width="1000" height="500" style="font-family: 'graph', serif;">
+		<polygon points="254 0 254 470 345 470 345 0"  fill="#eeeeee" stroke-width="1"/>
+	  	<polygon points="133 0 133 470 193 470 193 0"  fill="#eeeeee" stroke-width="1"/>
+		<polygon points="756 0 756 470 868 470 868 0"  fill="#eeeeee" stroke-width="1"/>
+		<polygon points="363 0 363 470 418 470 418 0"  fill="#eeeeee" stroke-width="1"/>
+		<polygon points="99 0 99 470 106 470 106 0"  fill="#eeeeee" stroke-width="1"/>
+		<polygon points="421 0 421 470 439 470 439 0"  fill="#eeeeee" stroke-width="1"/>
+		<polygon points="68 0 68 470 73 470 73 0"  fill="#eeeeee" stroke-width="1"/>
+		<polygon points="229 0 229 470 239 470 239 0"  fill="#eeeeee" stroke-width="1"/>
+		<polygon points="665 0 665 470 675 470 675 0"  fill="#eeeeee" stroke-width="1"/>
+    </svg>
+</div>
+<script type="text/javascript" src="snp-script.js"></script>
+
+
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,534 @@
+
+/********************************
+ ** FILE: ink.css
+ ********************************/
+
+.ink {
+	border:1px solid #222;
+	font-family: Arial, Helvetica, sans-serif;
+
+}
+
+
+/********************************
+ ** FILE: basicChart.css
+ ********************************/
+
+/* Axes */
+
+.axis path, .axis line {
+  fill: none;
+  stroke: #666;
+  shape-rendering: crispEdges;
+}
+
+.y.axis .domain {
+}
+
+.y.axis .tick {
+  stroke: #666;
+}
+.axis text {
+  font-size: 12px;
+}
+.y text {
+	fill:#666;
+  font-weight: normal;
+}
+
+.y.axis .tick.minor {
+  stroke: #DFDFDF;
+} 
+
+.x.axis .tick {
+  stroke: #666;
+}
+
+.x.axis .domain {
+  stroke: #666;
+}
+
+.x.axis text {
+  fill: #666;
+}
+
+
+
+/********************************
+ ** FILE: basicStepper.css
+ ********************************/
+
+/*Subnav*/
+#nytg-stepper {
+  position: relative;
+  height: 28px;
+  margin: 8px 0 0;
+  padding: 8px 0 0;
+}
+.ink-basicStepper {
+  padding: 0;
+  font-family: Helvetica, Arial;
+  position: relative;
+}
+
+.ink-basicStepper .ink-steps {
+  margin: 0 0 0 10px;
+  padding: 0;
+  display: block;
+  float: left;
+}
+
+.ink-basicStepper .ink-step {
+  font-size: 13px;
+  background-image: none;
+  list-style-type: none;
+  cursor: pointer;
+  display: block;
+  float: left;
+  padding: 0px 7px;
+  margin: 7px 0;
+}
+
+.ink-basicStepper .ink-step a {
+  color: #AAA;
+}
+
+.ink-basicStepper .ink-last {
+  border-right: none;
+}
+
+.ink-basicStepper  .ink-selected {
+    /*padding: 0px;*/
+}
+
+.ink-basicStepper .ink-selected a {
+  font-weight: bold;
+  color: black;
+  /*background: url(../../images/electoral_map/small-pointer.png) no-repeat center bottom;*/
+  padding-bottom: 8px;
+  /*padding: 0px 0px 4px;*/
+  /*border-bottom: 1px solid #ccc;*/
+  /*border-radius: 3px;*/
+}
+
+.ink-basicStepper .ink-stepperButton {
+  padding: 0 12px;
+  margin: 0;
+  display: block;
+  color: white;
+  text-decoration: none;
+  border-radius: 2px;
+/*  text-transform: uppercase;*/
+  font-size: 14px;
+  line-height: 30px;
+  width: 30px;
+/*  height: 28px;*/
+  outline:none;  
+}
+.ink-basicStepper .ink-next{
+  float: left;
+  background: #004276 url(https://static01.nyt.com/packages/images/newsgraphics/2012/0510-tech-ipos/whiteArrow-right.png) no-repeat 42px center;
+  padding-right: 26px;  
+}
+.ink-basicStepper .ink-previous{
+  float: left;
+  margin-right: 4px;
+  padding-left: 26px;
+  background: #004276 url(https://static01.nyt.com/packages/images/newsgraphics/2012/0510-tech-ipos/whiteArrow-left.png) no-repeat 2px center;  
+}
+
+.ink-basicStepper .ink-stepperButton:hover {
+  background-color: #064D84;
+}
+
+.ink-basicStepper .ink-disabled {
+  background-color: #C2CDD6;
+}
+
+.ink-basicStepper .ink-disabled:hover {
+  background-color: #C2CDD6;
+}
+
+
+
+
+
+
+/********************************
+ ** FILE: base.css
+ ********************************/
+
+/* Structure */
+#nytg-wrapper {
+
+	width: 950px;
+	margin: 20px auto;
+	padding: 0 10px;
+}
+
+#nytg-ie8-wrapper {
+	width: 950px;
+	margin: 40px auto;
+	padding: 0 10px;
+	display: none;
+}
+
+#nytg-error p {
+  text-align: center;
+  font-size: 13px;
+  line-height: 20px;
+  margin: 10px;
+  border: solid 1px #CCC;
+  background: #ffd;
+  padding: 10px;
+}
+
+.nytg-canvas-wrap {
+  position: relative;
+  border-top: 1px solid black;
+	padding-top: 0px;
+	margin: 12px auto;
+	overflow: hidden;
+}
+#nytg-canvas {
+	position: relative;
+	width: 950px;
+	height: 560px;
+}
+  #nytg-canvas .y path {
+    display: none;
+  }
+
+.company {
+	position: absolute;
+/*  opacity: 0.4;*/
+	border-radius: 1000px;
+/*	-webkit-transition-property: top, left, width, height;
+	-webkit-transition-duration: 2s;
+	-moz-transition-property: top, left, width, height;
+	-moz-transition-duration: 2s;
+	-ms-transition-property: top, left, width, height;
+	-ms-transition-duration: 2s;
+	-o-transition-property: top, left, width, height;
+	-o-transition-duration: 2s;
+	transition-property: top, left, width, height;
+	transition-duration: 2s;*/
+}
+
+.nytg-clip {
+	overflow: hidden;
+}
+
+.nytg-stage {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+}
+
+.nytg-circleContainer {
+	position: absolute;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+
+/* Typography */
+
+
+/* Scoop Fixes */
+
+span.noWrap.feedback {
+  white-space: normal;
+}
+
+#interactiveFooter {
+    border-top:1px solid #DDDDDD;
+    margin-top:10px;
+    padding-top:12px !important;
+}
+
+div.storyHeader h1 {
+    font-size: 26px!important;
+    margin-bottom:4px!important;
+    margin-top:3px!important;
+}
+
+/* Legend ---------------------------------------*/
+
+.nytg-canvas-legend {
+  position: absolute;
+  left: 0; top: 30px;
+  color: #666;
+  font: bold 14px/16px Arial;
+  width: 77px;
+  text-align: right;
+}
+  .nytg-canvas-tiny-legend {
+    font: normal 11px/15px Arial;
+  }
+  .nytg-canvas-legend-bottom {
+    top: auto;
+    bottom: 38px;
+    width: 100px;
+    left: 62px;
+  }
+
+/* Explainer ---------------------------------------*/
+
+.nytg-explainer {
+  color: #000;
+  width: 365px;
+  position: absolute;
+  top: 30px;
+  left: 130px;
+}
+  .nytg-explainer .nytg-title {
+    margin-bottom: 7px;
+    font: bold 16px/19px Arial;
+  }
+  .nytg-explainer .nytg-description {
+    font: 15px/19px Georgia; 
+  }
+
+/* Search ---------------------------------------*/
+
+.nytg-stepper-wrapper {
+  position: relative;
+}
+
+#nytg-search {
+  position: absolute; 
+  right: 10px; bottom: 3px;
+}
+  #nytg-search label {
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 12px;
+    color: #999;
+  }
+
+/* Chart popup */
+
+div.nytg-popup {
+	border: 1px solid #bbbbbb;
+	color: black;
+	background-color: white;
+	position: absolute;
+	font-family: Arial, Helvetical, sans-serif;
+	padding: 10px;
+	max-width: 160px;/* */
+	box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.nytg-popup-title {
+	font-size: 12px;
+	font-weight: bold;
+	padding-bottom: 4px;
+}
+
+.nytg-popup table {
+	margin-top: 4px;
+	border-collapse:collapse;
+	border-top: 1px solid #ccc;
+	width: 100%;
+}
+
+.nytg-popup td {
+	text-align: center;
+}
+
+.nytg-popup td.row1 {
+	padding-top:6px;
+	padding-bottom:0px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.nytg-popup td.row2 {
+	/*(padding-left: 10px*/
+	font-size: 11px;
+	color: #666;
+}
+
+.nytg-popup td.col2 {
+	padding-left: 10px;
+}
+
+
+.nytg-popup .nytg-popup-label {
+	color: #666;
+	font-weight: normal;
+	font-size: 11px;
+	padding-right: 5px;
+}
+
+.nytg-popup .nytg-popup-value {
+	font-weight: bold;
+	font-size: 12px;
+	text-align: center;
+}
+
+.nytg-popup-line {
+	line-height: 15px;
+}
+
+.nytg-ipo-label {
+	position:absolute;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #666;
+}
+
+.ledeStory .insetHFullWidth .storyHeader .dateline{line-height:2.4em;margin-bottom:3px;margin-top:0px;}
+.insetHFullWidth #articleToolsTop{margin-bottom:0;margin-top:0px;}
+
+
+
+/********************************
+ ** FILE: jquery-ui-1.8.20.custom.css
+ ********************************/
+
+/*!
+ * jQuery UI CSS Framework 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ */
+
+/* Layout helpers
+----------------------------------*/
+.ui-helper-hidden { display: none; }
+.ui-helper-hidden-accessible { position: absolute !important; clip: rect(1px 1px 1px 1px); clip: rect(1px,1px,1px,1px); }
+.ui-helper-reset { margin: 0; padding: 0; border: 0; outline: 0; line-height: 1.3; text-decoration: none; font-size: 100%; list-style: none; }
+.ui-helper-clearfix:before, .ui-helper-clearfix:after { content: ""; display: table; }
+.ui-helper-clearfix:after { clear: both; }
+.ui-helper-clearfix { zoom: 1; }
+.ui-helper-zfix { width: 100%; height: 100%; top: 0; left: 0; position: absolute; opacity: 0; filter:Alpha(Opacity=0); }
+
+
+/* Interaction Cues
+----------------------------------*/
+.ui-state-disabled { cursor: default !important; }
+
+
+/* Icons
+----------------------------------*/
+
+/* states and images */
+.ui-icon { display: block; text-indent: -99999px; overflow: hidden; background-repeat: no-repeat; }
+
+
+/* Misc visuals
+----------------------------------*/
+
+/* Overlays */
+.ui-widget-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+
+/*!
+ * jQuery UI CSS Framework 1.8.20
+ *
+ * Copyright 2012, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Theming/API
+ *
+*/
+
+
+/* Component containers
+----------------------------------*/
+
+
+/* Interaction states
+----------------------------------*/
+/*.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default { border: 1px solid #cccccc; background: #f6f6f6 url(images/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #1c94c4; }
+.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited { color: #1c94c4; text-decoration: none; }
+.ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus { border: 1px solid #fbcb09; background: #fdf5ce url(images/ui-bg_glass_100_fdf5ce_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #c77405; }
+.ui-state-hover a, .ui-state-hover a:hover { color: #c77405; text-decoration: none; }
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active { border: 1px solid #fbd850; background: #ffffff url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x; font-weight: bold; color: #eb8f00; }
+.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited { color: #eb8f00; text-decoration: none; }
+.ui-widget :active { outline: none; }
+*/
+/* Interaction Cues
+----------------------------------*/
+/*.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight  {border: 1px solid #fed22f; background: #ffe45c url(images/ui-bg_highlight-soft_75_ffe45c_1x100.png) 50% top repeat-x; color: #363636; }
+.ui-state-highlight a, .ui-widget-content .ui-state-highlight a,.ui-widget-header .ui-state-highlight a { color: #363636; }
+.ui-state-error, .ui-widget-content .ui-state-error, .ui-widget-header .ui-state-error {border: 1px solid #cd0a0a; background: #b81900 url(images/ui-bg_diagonals-thick_18_b81900_40x40.png) 50% 50% repeat; color: #ffffff; }
+.ui-state-error a, .ui-widget-content .ui-state-error a, .ui-widget-header .ui-state-error a { color: #ffffff; }
+.ui-state-error-text, .ui-widget-content .ui-state-error-text, .ui-widget-header .ui-state-error-text { color: #ffffff; }
+.ui-priority-primary, .ui-widget-content .ui-priority-primary, .ui-widget-header .ui-priority-primary { font-weight: bold; }
+.ui-priority-secondary, .ui-widget-content .ui-priority-secondary,  .ui-widget-header .ui-priority-secondary { opacity: .7; filter:Alpha(Opacity=70); font-weight: normal; }
+.ui-state-disabled, .ui-widget-content .ui-state-disabled, .ui-widget-header .ui-state-disabled { opacity: .35; filter:Alpha(Opacity=35); background-image: none; }
+*/
+/* Icons
+----------------------------------*/
+
+/* states and images */
+
+
+/* positioning */
+
+
+
+/* Misc visuals
+----------------------------------*/
+
+.ui-autocomplete { position: absolute; cursor: default; }	
+
+/* workarounds */
+* html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+
+/*
+ * jQuery UI Menu 1.8.20
+ *
+ * Copyright 2010, AUTHORS.txt (http://jqueryui.com/about)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ *
+ * http://docs.jquery.com/UI/Menu#theming
+ */
+.ui-menu {
+	list-style:none;
+	padding: 5px 0 0 0;
+	margin: 0;
+	display:block;
+	float: left;
+	background: #fff;
+	border: 1px solid #bbb;
+	list-style-type: none;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+.ui-menu .ui-menu {
+	margin-top: -3px;
+}
+.ui-menu .ui-menu-item {
+	margin:0;
+	padding: 0;
+	zoom: 1;
+	float: left;
+	clear: left;
+	width: 100%;
+	background: none;
+	border-bottom: 1px solid #f4f4f4;
+}
+.ui-menu .ui-menu-item a {
+	text-decoration:none;
+	display:block;
+	padding:5px 10px;
+	zoom:1;
+	color: #000;
+	font: 11px/15px Arial;
+	border: 0;
+	cursor: pointer;
+}
+.ui-menu .ui-menu-item a.ui-state-hover,
+.ui-menu .ui-menu-item a.ui-state-active {
+	background: #ccd9e4;
+}
+
+

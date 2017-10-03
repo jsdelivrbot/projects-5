@@ -1,0 +1,70 @@
+.ivz_mainBgContainer {
+    left: 0;
+    margin-left: 0px;
+    position: relative;
+    top: 0;
+    width:100%;
+    z-index: 15;
+    background-repeat:no-repeat; 
+    background-position: center 0px; 
+}
+
+.bg_amadablam1{background-image: url("../img/template/backgrounds/bg_amadablam1_lg.jpg"); }
+
+.bg_amadablam2{background-image: url("../img/template/backgrounds/bg_amadablam2_lg.jpg"); } 
+
+.bg_trimarkGradient1{background-image: url("../img/template/backgrounds/bg_trimarkGradient1_lg.jpg");}
+
+.bg_invescoGradient1{background-image: url("../img/template/backgrounds/bg_invescoGradient1_lg.jpg");}
+
+.bg_powersharesGradient1{background-image: url("../img/template/backgrounds/bg_powersharesGradient1_lg.jpg");}
+
+.bg_intactiveGradient1{background-image:url("../img/template/backgrounds/bg_intactiveGradient1_lg.jpg")}
+
+
+
+@media (max-width: 1200px){
+.bg_amadablam1{background-image: url('../img/template/backgrounds/bg_amadablam1_md.jpg');}
+
+.bg_amadablam2{background-image: url('../img/template/backgrounds/bg_amadablam2_md.jpg');}
+
+.bg_trimarkGradient1{background-image: url("../img/template/backgrounds/bg_trimarkGradient1_md.jpg");}
+
+.bg_invescoGradient1{background-image: url("../img/template/backgrounds/bg_invescoGradient1_md.jpg");}
+
+.bg_powersharesGradient1{background-image: url("../img/template/backgrounds/bg_powersharesGradient1_md.jpg");}
+
+.bg_intactiveGradient1{background-image:url("../img/template/backgrounds/bg_intactiveGradient1_md.jpg")}
+}
+
+
+@media (max-width: 1100px){
+
+
+}
+
+
+@media (max-width: 990px){
+
+}
+
+
+
+
+@media (max-width: 720px){
+
+
+.ivz_mainBgContainer{
+	background: #001a7a; /* Old browsers */
+}
+
+
+.bg_trimarkGradient1{background:#6423A0;}
+
+.bg_powersharesGradient1 {background:#fe5900;}
+
+.bg_intactiveGradient1{background:#009BFA;}
+
+
+
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+
+.bar2 {
+  fill: #0F2747;
+}
+
+.bar:hover {
+  fill: #9cbb59;
+}
+
+.axis--x path {
+  /*display: none;*/
+}
+
+.bar {
+  fill: #6F95AD;
+}
+
+.bar2:hover {
+  fill: #9cbb59;
+}
+
+.axis--x2 path {
+  /*display: none;*/
+}
+
+.axis line { display: none; }
+
+.axis text { display: none; }
+
+
+.line2 {
+  fill: none;
+  stroke: #0F2747;
+  stroke-width: 2px;
+}
+
+
+
+</style>
+<center>
+  <svg width="960" height="600"></svg>
+</center>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var svg = d3.select("svg"),
+    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+
+
+var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+    y = d3.scaleLinear().rangeRound([height/2, 0]);
+
+var g = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var g0 = svg.append("g")
+    .attr("transform", "translate(" + margin.left + "," + (height/2 - 10 + margin.bottom)+ ")");
+
+d3.csv("data.csv", function(d) {
+  d.frequency = +d.frequency;
+  d.frequency2 = +d.frequency2;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+
+  x.domain(data.map(function(d) { return d.letter; }));
+  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
+
+  g.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height/2 + ")")
+      .call(d3.axisBottom(x));
+
+  // g.append("g")
+  //     .attr("class", "axis axis--y")
+  //     .call(d3.axisLeft(y).ticks(10, "%"))
+  //   .append("text")
+  //     .attr("transform", "rotate(-90)")
+  //     .attr("y", 6)
+  //     .attr("dy", "0.71em")
+  //     .attr("text-anchor", "end")
+  //     .text("Frequency");
+
+  g.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("y", function(d) { return y(d.frequency); })
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height/2 - y(d.frequency); });
+
+  // g0.append("g")
+  //     .attr("class", "axis axis--x2")
+  //     .attr("transform", "translate(0," + height/2 + ")")
+  //     .call(d3.axisBottom(x));
+
+  // g0.append("g")
+  //     .attr("class", "axis axis--y2")
+  //     .call(d3.axisLeft(y).ticks(10, "%"))
+  //   .append("text")
+  //     .attr("transform", "rotate(-90)")
+  //     .attr("y", 6)
+  //     .attr("dy", "0.71em")
+  //     .attr("text-anchor", "end")
+  //     .text("Frequency");
+  g0.selectAll(".bar")
+    .data(data)
+    .enter().append("rect")
+      .attr("class", "bar2")
+      .attr("x", function(d) { return x(d.letter); })
+      .attr("y", 0)
+      .attr("width", x.bandwidth())
+      .attr("height", function(d) { return height/2 - y(d.frequency2); });
+
+
+
+
+g.selectAll("dot")
+      .data(data)
+    .enter().append("circle")
+      .attr("r", 5)
+      .attr("cx", function(d) { return x(d.letter)+(x.bandwidth()/2); })
+      .attr("cy", function(d) { return y(d.frequency); })
+      .attr("fill","#5F5F5F");
+
+  
+  var valueline = d3.line()
+    .x(function(d) { return x(d.letter)+(x.bandwidth()/2); })
+    .y(function(d) { return y(d.frequency); });
+
+	// x.domain(d3.extent(data, function(d) { return d.letter; }));
+ //  	y.domain([0, d3.extent(data, function(d) { return d.frequency; })]);
+  g.append("path")
+      .data([data])
+      .attr("class", "line2")
+      .attr("d", valueline);
+});
+
+</script>

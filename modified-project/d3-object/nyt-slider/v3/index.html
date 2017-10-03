@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style1.scss">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="d3.v4.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Lato", sans-serif;
+        }
+        /* Style the tab */
+        svg{
+            padding-left: 20px;}
+        line.track{
+            stroke: #fff;
+        }*/
+        /*ul {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        /* Style the buttons inside the tab */
+
+        /*ul li {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+        }*/
+        /* Change background color of buttons on hover */
+
+        ul li:hover {
+            background-color: #ddd;
+        }
+        /* Create an active/current tablink class */
+
+        ul li .active {
+            background-color: #ccc;
+        }
+        /* Style the tab content */
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+        }
+        /* Fade in tabs */
+
+        @-webkit-keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        #slider {
+          width:620px;
+
+        }
+        #slider2 {
+          width:620px;
+
+        }
+        #slider3 {
+          width:620px;
+
+        }
+        #sliderdiv{
+          padding-left: 50px;
+         }
+
+         #sliderdiv2{
+          padding-left: 50px;
+         }
+
+         #sliderdiv3{
+          padding-left: 50px;
+         }
+
+         .handle {
+            /*53abaf*/
+            fill: #53abaf;
+            stroke: #000;
+            stroke-opacity: 0.5;
+            stroke-width: 1.25px;
+            cursor: ew-resize;
+            user-select: none;
+            pointer-events: none;
+        }
+        
+
+        
+
+    </style>
+
+
+    <script>
+        function openComp(evt, compName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(compName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12" style="text-align: center; margin-bottom: 20px;">
+                <h3 style="font-weight: bold;;">Participation model slider </h3>
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" ><a class="link"  onclick="openComp(event, 'home')" href="#home" aria-controls="home" role="tab" data-toggle="tab">US.22</a></li>
+                    <li role="presentation" ><a class="link" onclick="openComp(event, 'profile')" href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Dw DL</a></li>
+                    <li role="presentation" ><a class="link" onclick="openComp(event, 'messages')" href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Tokyo</a></li>
+
+                </ul>
+            </div>
+
+            <div id="home" class="tabcontent">
+                <h3>US 22</h3>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                	 <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                       Amount Invested
+                       
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="us" type="text" name="" style=" padding-top: 10px; font-size: 150%; text-align: center; height: 50px;">
+                    </div>
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                        Current MGMT Fee<br>
+                        <span style="font-size: 50px; color: blue;" id="uscmper">76%</span>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <!-- <div style="width: 100%" class="d3Chart" id="mChart" data-xAxisLabel="years" data-yAxisLabel=" cumulative savings" data-yAxisFormat="$.2f" data-parameter="years" data-value="9" data-type="year" data-restrict="Math.max(1, Math.min(20, d3.round(v)))" data-scale="d3.scale.linear().domain([1, 20])">
+                    </div> -->
+                    <div id="svg" class="g-parameter-tip" ></div>
+                    
+                    <div id="svg1" ></div>
+                    <div id="sliderdiv"><input id="slider" type="range" min="1" max="1000" step="1" value="10" /></div>
+                </div>
+
+
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                	<div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                       Saved
+                       
+                    </div>
+                    <div class="form-group">
+                        <LABEL class="form-control" id="uspmg" type="text" name="" style=" padding-top: 10px; font-size: 150%; text-align: center; height: 50px;"></LABEL>
+                        <!-- <span id="uspmg">…</span> -->
+                    </div>
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                        Predicted MGMT Fee<br>
+                        <span style="font-size: 50px; color: blue;" id="uspmper">76%</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 2nd tab -->
+
+            <div id="profile" class="tabcontent">
+                <h3>Dw DL</h3>
+
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                       Amount Invested
+                       
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="dw" type="text" name="" style=" padding-top: 10px; font-size: 150%; text-align: center; height: 50px;">
+                    </div>
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                        Current MGMT Fee<br>
+                        <span style="font-size: 50px; color: blue;" id="dwcmper">76%</span>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <!-- <div style="width: 100%" class="d3Chart1" id="mChart" data-xAxisLabel="years" data-yAxisLabel=" cumulative savings" data-yAxisFormat="$.2f" data-parameter="years" data-value="9" data-type="year" data-restrict="Math.max(1, Math.min(20, d3.round(v)))" data-scale="d3.scale.linear().domain([1, 20])">
+
+                    </div>
+ -->
+                    <div id="svg2" class="g-parameter-tip"></div>
+                    
+                    <div id="svg12" ></div>
+                    <div id="sliderdiv2"><input id="slider2" type="range" min="1" max="1000" step="1" value="10" /></div>
+
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                       Saved 
+                       
+                    </div>
+                    <div class="form-group">
+                        <LABEL class="form-control" id="dwpmg" type="text" name="" style=" padding-top: 10px; font-size: 150%; text-align: center; height: 50px;"></LABEL>
+                    </div>
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                        Predicted MGMT Fee<br>
+                        <span style="font-size: 50px; color: blue;" id="dwpmper" >76%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3rd tab -->
+
+            <div id="messages" class="tabcontent">
+                <h3>ODN</h3>
+
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                       Amount Invested
+                       
+                    </div>
+                    <div class="form-group">
+                        <input class="form-control" id="odn" type="text" name="" style=" padding-top: 10px; font-size: 150%; text-align: center; height: 50px;">
+                    </div>
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                        Current MGMT Fee<br>
+                        <span style="font-size: 50px; color: blue;" id="odncmper">67%</span>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-8 col-lg-8">
+                    <!-- <div style="width: 100%" class="d3Chart2" id="mChart" data-xAxisLabel="years" data-yAxisLabel=" cumulative savings" data-yAxisFormat="$.2f" data-parameter="years" data-value="9" data-type="year" data-restrict="Math.max(1, Math.min(20, d3.round(v)))" data-scale="d3.scale.linear().domain([1, 20])">
+
+                    </div> -->
+
+                    <div id="svg3" class="g-parameter-tip"></div>
+                    
+                    <div id="svg13" ></div>
+                    <div id="sliderdiv3"><input id="slider3" type="range" min="1" max="1000" step="1" value="10" /></div>
+
+
+                </div>
+                <div class="col-sm-2 col-md-2 col-lg-2">
+                <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                       Saved 
+                    </div>
+                    <div class="form-group">
+                        <LABEL class="form-control" id="odnpmg" type="text" name="" style=" padding-top: 10px; font-size: 150%; text-align: center; height: 50px;"></LABEL>
+                    </div>
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px;">
+                        Predicted MGMT Fee<br>
+                        <span style="font-size: 50px; color: blue;" id="odnpmper">76%</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+    <script type="text/javascript">
+        
+        var width = 670,
+        height = 400,
+        padding = 16;
+
+    var svg = d3.select("#svg")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    // //2nd bsr chat
+
+    var svg1 = d3.select("#svg1")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", 26);
+
+    //Dq Do
+    var svg2 = d3.select("#svg2")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    // //2nd bsr chat
+
+    var svg12 = d3.select("#svg12")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", 26);
+
+
+    //odn
+    var svg3 = d3.select("#svg3")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    // //2nd bsr chat
+
+    var svg13 = d3.select("#svg13")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", 26);
+
+
+
+    var data = d3.range(1, 21);
+    var data2 = d3.range(1, 21);
+    var data3 = d3.range(1, 21);
+
+    //2nd
+    var data1 = d3.range(1,1000);
+    var sclData = [];
+
+    var data12 = d3.range(1,1000);
+    var sclData2 = [];
+
+    var data13 = d3.range(1,1000);
+    var sclData3 = [];
+    var i;
+   
+
+    var xScale = d3.scaleBand()
+        .domain(data)
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    // //2nd
+    var xScale1 = d3.scaleBand()
+        .domain([50,150,250,350,450,550,650,750,850,950])
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    var yScale = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d)*1.5])
+        .range([height - padding, padding]);
+
+
+    //dwd
+    var xScale2 = d3.scaleBand()
+        .domain(data)
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    // //2nd
+    var xScale12 = d3.scaleBand()
+        .domain([50,150,250,350,450,550,650,750,850,950])
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    var yScale2 = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d)*1.5])
+        .range([height - padding, padding]);
+
+
+    //odn
+    var xScale3 = d3.scaleBand()
+        .domain(data)
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    // //2nd
+    var xScale13 = d3.scaleBand()
+        .domain([50,150,250,350,450,550,650,750,850,950])
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    var yScale3 = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d)*1.5])
+        .range([height - padding, padding]);
+
+    // //2nd
+    // var yScale1 = d3.scaleLinear()
+    var tac = d3.select("#slider").node().value;
+    var t2  = Math.round(tac/50);
+    var bars = svg.selectAll(".bars")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", d => xScale(d))
+        .attr("width", xScale.bandwidth())
+        .attr("y", d => yScale(d))
+        .attr("height", d => height - padding - yScale(d))
+        .attr("fill", (d => t2 == d ? "#bad80a" : "#e0e0e0"));
+
+    var tac2 = d3.select("#slider2").node().value;
+    var t22  = Math.round(tac2/50);
+    var bars2 = svg2.selectAll(".bars")
+        .data(data2)
+        .enter()
+        .append("rect")
+        .attr("x", d => xScale(d))
+        .attr("width", xScale2.bandwidth())
+        .attr("y", d => yScale(d))
+        .attr("height", d => height - padding - yScale(d))
+        .attr("fill", (d => t22 == d ? "#bad80a" : "#e0e0e0"));
+
+    var tac3 = d3.select("#slider3").node().value;
+    var t23  = Math.round(tac3/50);
+    var bars3 = svg3.selectAll(".bars")
+        .data(data3)
+        .enter()
+        .append("rect")
+        .attr("x", d => xScale(d))
+        .attr("width", xScale3.bandwidth())
+        .attr("y", d => yScale(d))
+        .attr("height", d => height - padding - yScale(d))
+        .attr("fill", (d => t23 == d ? "#bad80a" : "#e0e0e0"));
+
+    // //2nd
+
+
+    var xAxis = d3.axisBottom(xScale);
+
+    var yAxis = d3.axisLeft(yScale);
+
+    //dwd
+    var xAxis2 = d3.axisBottom(xScale2);
+
+    var yAxis2 = d3.axisLeft(yScale2);
+
+    //odn
+    var xAxis3 = d3.axisBottom(xScale3);
+
+    var yAxis3 = d3.axisLeft(yScale3);
+
+
+
+    // //2nd
+     var xAxis1 = d3.axisBottom(xScale1)
+     				.ticks(10);
+     var xAxis12 = d3.axisBottom(xScale12)
+     				.ticks(10);
+     var xAxis13 = d3.axisBottom(xScale13)
+     					.ticks(10);
+
+
+     //dwd
+ 
+
+    var gX = svg.append("g")
+        .attr("transform", "translate(0," + (height - padding) + ")")
+        .call(xAxis);
+
+    //2nd
+    var gX1 = svg1.append("g")
+        .attr("transform", "translate(0," + (26 - 16) + ")")
+        .call(xAxis1);
+
+
+
+    var gY = svg.append("g")
+        .attr("transform", "translate(" + padding * 2 + ",0)")
+        .call(yAxis);
+
+
+
+        //dwd
+
+    var gX2 = svg2.append("g")
+        .attr("transform", "translate(0," + (height - padding) + ")")
+        .call(xAxis2);
+
+    //2nd
+    var gX12 = svg12.append("g")
+        .attr("transform", "translate(0," + (26 - 16) + ")")
+        .call(xAxis12);
+
+
+
+    var gY2 = svg2.append("g")
+        .attr("transform", "translate(" + padding * 2 + ",0)")
+        .call(yAxis2);
+    
+
+    //odn
+
+    var gX3 = svg3.append("g")
+        .attr("transform", "translate(0," + (height - padding) + ")")
+        .call(xAxis3);
+
+    //2nd
+    var gX13 = svg13.append("g")
+        .attr("transform", "translate(0," + (26 - 16) + ")")
+        .call(xAxis13);
+
+
+
+    var gY3 = svg3.append("g")
+        .attr("transform", "translate(" + padding * 2 + ",0)")
+        .call(yAxis3);
+
+    // //2nd
+
+    var cmg = d3.select("#us").node().value
+    var pmg = ((cmg + (t2 * 5 * 10))*t2)/25;
+    if(cmg != 0){
+    	d3.select("#uspmg").text("$"+pmg);
+    }
+	else{
+		d3.select("#uspmg").text("$0");
+		d3.select('#uscmper').text("0.85%");
+		d3.select('#uspmper').text("0%");
+	}
+
+    var cmg = d3.select("#dw").node().value
+    var pmg = ((cmg + (t22 * 5 * 10))*t22)/25;
+    if(cmg != 0){
+    	d3.select("#dwpmg").text("$"+pmg);
+    }
+	else{
+		d3.select("#dwpmg").text("$0");
+		d3.select('#dwcmper').text("0.85%");
+		d3.select('#dwpmper').text("0%");
+	}
+
+
+    var cmg = d3.select("#odn").node().value
+    var pmg = ((cmg + (t23 * 5 * 10))*t23)/25;
+    if(cmg != 0){
+    	d3.select("#odnpmg").text("$"+pmg);
+    	//d3.select('#dwcmper').text("0%");
+    }
+	else{
+		d3.select("#odnpmg").text("$0");
+		d3.select('#odncmper').text("0.85%");
+		d3.select('#odnpmper').text("0%");
+	}
+
+
+
+    d3.select("#slider").on("input", function() {
+        var currentValue = Math.round(this.value/50);
+        yScale.domain([0, currentValue*3])
+        yScale.range([height - padding, padding]);
+        bars.attr("y", d => yScale(d))
+
+            .attr("height", d => height - padding - yScale(d))
+            .attr("fill", (d => currentValue == d ?  "#bad80a" : "#e0e0e0" ));
+
+        gY.call(yAxis);
+        var cmg = d3.select("#us").node().value
+    	var pmg = Math.round((((cmg*currentValue) + (this.value*currentValue))/(0.85))-((cmg*currentValue) + (this.value*currentValue)));
+    	if(cmg != 0){
+    	d3.select("#uspmg").text("$"+pmg);
+    	d3.select("#uspmper").text((0.85/currentValue).toFixed(2));
+    	}
+
+    })
+
+    //dwd
+    d3.select("#slider2").on("input", function() {
+        var currentValue = Math.round(this.value/50);
+        yScale2.domain([0, currentValue*3])
+        yScale2.range([height - padding, padding]);
+        bars2.attr("y", d => yScale2(d))
+
+            .attr("height", d => height - padding - yScale2(d))
+            .attr("fill", (d => currentValue == d ?  "#bad80a" : "#e0e0e0" ));
+
+        gY2.call(yAxis2);
+
+        var cmg = d3.select("#dw").node().value
+    var pmg = Math.round((((cmg*currentValue) + (this.value*currentValue))/(0.85))-((cmg*currentValue) + (this.value*currentValue)));
+    if(cmg != 0){
+    d3.select("#dwpmg").text("$"+pmg);
+    d3.select("#dwpmper").text((0.85/currentValue).toFixed(2));
+	}
+
+    })
+    //odn
+    d3.select("#slider3").on("input", function() {
+        var currentValue = Math.round(this.value/50);
+        yScale3.domain([0, currentValue*3])
+        yScale3.range([height - padding, padding]);
+        bars3.attr("y", d => yScale3(d))
+
+            .attr("height", d => height - padding - yScale3(d))
+            .attr("fill", (d => currentValue == d ?  "#bad80a" : "#e0e0e0" ));
+
+        gY3.call(yAxis3);
+
+        var cmg = d3.select("#odn").node().value
+    var pmg = Math.round((((cmg*currentValue) + (this.value*currentValue))/(0.85))-((cmg*currentValue) + (this.value*currentValue)));
+    if(cmg != 0){
+    d3.select("#odnpmg").text("$"+pmg);
+    d3.select("#odnpmper").text((0.85/currentValue).toFixed(2));
+	}
+    })
+
+    </script>
+
+</body>
+
+</html>

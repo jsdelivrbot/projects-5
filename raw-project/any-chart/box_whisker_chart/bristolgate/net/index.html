@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+        
+        
+        <script src="data.js"></script>
+        
+        
+        <title>Performance vs peer universe</title>
+              <style>
+		@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+         html, body, #container {
+			 font-family: 'Noto Sans', sans-serif;
+             width: 100%;
+             height:calc(100% - 30px);
+             margin: 0;
+             padding: 0;
+         }
+		 .chart-header{
+			 text-align:center;
+			 }
+		.chart-header h2{
+			font-size:18px;
+			font-weight:normal;
+			color:#777;
+			margin:5px 0;}
+		.chart-header p{
+			font-size:14px;
+			font-weight:normal;
+			color:#999;
+			margin:0 auto;
+			max-width:220px;
+			}
+		.chart-header p span{
+			float:left;}
+		.bglg{
+			width: 0; 
+			height: 0; 
+		 	border-left: 10px solid transparent;
+			border-right: 10px solid transparent;
+			border-bottom: 15px solid #0D2747;
+      margin-right: 5px; 
+			/*width:15px;*/
+			/*margin-right:5px;*/
+			/*height:15px;*/
+			/*border-radius:50%;*/
+			/*background:#0D2747;*/
+			/*float:left;*/
+		}
+
+		#bgNet{
+			width:25px;
+			/*margin-right:5px;*/
+			height:25px;
+			border-radius:50%;
+			/*background:#0D2747;*/
+			float:left;
+		}
+		.smplg{
+			width:15px;
+			height:15px;
+			margin-right:5px;
+			border-radius:50%;
+			margin-left:20px;
+			background:#6D94AD;
+			float:left;}
+		 #container path.change{
+			 fill:#9cbb59;
+			 stroke:#9cbb59;}
+		#container path.bristolgate{
+			 fill:#0D2747;
+			 stroke:#0D2747;
+			 stroke-width:8px;}
+		#container path.smp{
+			 fill:#6D94AD;
+			 stroke:#6D94AD;
+			 stroke-width:8px;}
+		.ctitle{
+			display:none;}
+		.anychart-credits{
+			display:none;}
+		.anychart-menu{
+			display: none;
+		}
+		
+        </style>
+    </head>
+    <body>
+    	<div class="chart-header">
+        	<h2>Bristol Gate gross vs peer universe</h2>
+            <p><span class="bglg"></span> <span>BG net</span>  <span class="smplg"></span> <span>S&P 500 TRI</span></p>
+            <!-- <p style="text-align: left;"><svg width="25" height="25">
+			  <polygon fill="#0D2747" stroke="#0D2747" stroke-width="1"
+			    points="00,30
+			           10,10
+			           20,30" />
+			</svg>BG net</p> -->
+        </div>
+        <div id="container">
+        <!-- <div  id="bgNet" >
+        	<svg width="25" height="25">
+			  <polygon fill="#0D2747" stroke="#0D2747" stroke-width="1"
+			    points="05,30
+			           15,10
+			           25,30" />
+			</svg>
+			</div> -->
+			
+        </div>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+
+        <script type="text/javascript">
+         
+anychart.onDocumentReady(function () {
+    // create box chart
+    chart = anychart.box();
+
+    // set container id for the chart
+    chart.container('container');
+
+    // set chart title text settings
+   // chart.title('Bristol Gate US Equity Strategy Trailing Period Peer Comparison Returns');
+
+    // set axes settings
+    chart.xAxis().staggerMode(true);
+
+    // The data used in this sample can be obtained from the CDN
+    // http://cdn.anychart.com/samples-data/box-chart/box-and-whisker-chart/data.js
+    // create box chart series
+    
+    //series1.size(7);
+    var dataSet = anychart.data.set(getData());
+
+    //var seriesData_1 = dataSet.mapAs(null, {value: "marker1"});
+    
+
+    //var series1 = chart.marker(seriesData_1);
+
+    // series1.type('circle');
+    // series1.fill("#0D2747");
+    // series1.stroke("#0D2747");
+    // series1.selectFill("#0D2747");
+    // series1.hoverFill("#0D2747");
+    // series1.hover({
+    // 	fill: "#0D2747",
+    // 	stroke: "#0D2747"
+    // });
+    
+
+
+    var series = chart.box(getData());
+  	series.fill("#9CBB59");
+  	series.stroke("#78953C");
+  	series.medianStroke("#78953C");
+  	series.stemStroke("#78953C");
+  	series.whiskerStroke("#78953C");
+
+  	series.outlierMarkers({
+  		fill: "#6D94AD",
+  		stroke: "#6D94AD",
+  		size: 7,
+  		type: "circle"
+  	});
+  	series.hoverOutlierMarkers(
+  	{
+  		fill: "#6D94AD",
+  		stroke: "#6D94AD",
+  		size: 7
+  	});
+
+
+    
+
+  	//chart.interactivity("byX");
+    series.whiskerWidth('20%');
+
+    var seriesData_2 = dataSet.mapAs(null,{value: "marker2"});
+    var series2 = chart.marker(seriesData_2);
+
+    series2.type('triangleUp');
+    series2.fill("#0D2747");
+    series2.stroke("#0D2747");
+    series2.selectFill("#0D2747");
+    series2.hoverFill("#0D2747");
+    series2.size(8);
+    series2.hover({
+      fill: "#0D2747",
+      stroke: "#0D2747",
+      size: 8
+    });
+    
+
+    
+    //series2.size(7);
+   
+	// adjust tooltips content for the first series
+    /*series.tooltip().contentFormatter(function() {
+    return 'Range: ' + this.x + '\n' + 'Medium: ' + (this.q3+this.q1)/2 + '\n' + 'Lowest1: ' + this.lowest + '\n' +'Q1: ' + this.q1 + '\n' +'Median: ' + this.median + '\n' +'Q3: ' + this.q3 + '\n' +'Highest: ' +this.highest + '\n' +'Period: February 2015';
+    });*/
+	series.tooltip().contentFormatter(function() {
+    return '5th Percentile: ' + this.lowest + '\n' +'25th Percentile: ' + this.q1 + '\n' +'Median: ' + this.median + '\n' +'75th Percentile: ' + this.q3 + '\n' +'95th Percentile: ' +this.highest;
+    });
+    // series1.tooltip().contentFormatter(function() {
+    // return '5th Percentile: ' + this.lowest + '\n' +'25th Percentile: ' + this.q1 + '\n' +'Median: ' + this.median + '\n' +'75th Percentile: ' + this.q3 + '\n' +'95th Percentile: ' +this.highest;
+    // });
+    series2.tooltip().contentFormatter(function() {
+    return '5th Percentile: ' + this.lowest + '\n' +'25th Percentile: ' + this.q1 + '\n' +'Median: ' + this.median + '\n' +'75th Percentile: ' + this.q3 + '\n' +'95th Percentile: ' +this.highest;
+    });
+	//outlierIconShape("spoke");
+    // initiate chart drawing
+    chart.draw();
+});
+
+// $(document).ready(function(){
+// 	 $("g[data-ac-wrapper-id=48] path").addClass("change");
+// 	 $("g[data-ac-wrapper-id=10]").addClass("ctitle");
+// 	 $("g[data-ac-wrapper-id=86] path:nth-child(2n-1)").addClass("bristolgate");
+// 	 $("g[data-ac-wrapper-id=86] path:nth-child(2n)").addClass("smp");
+// 	 var row_str = '% ';
+// 	 $("g[data-ac-wrapper-id=35] tspan").append(row_str);
+	 
+// });
+
+    
+        </script>
+
+
+
+        
+        
+    </body>
+</html>

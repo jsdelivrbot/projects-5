@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DEMO</title>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
+	<style type="text/css">
+		#slider {
+		  width: 1020px;
+		}
+		#sliderdiv{
+		  padding-left: 40px;
+		 }
+
+		 #slider1 {
+		  width: 1020px;
+		  /*height: 600px;*/
+		}
+		#sliderdiv1{
+		  padding-left: 40px;
+		 }
+	</style>
+</head>
+<body>
+
+
+<div id="svg"></div>
+<div id="sliderdiv"><input id="slider" type="range" min="1" max="50" step="1" value="40"/></div>
+
+
+<div id="svg1"></div>
+<div id="sliderdiv1"><input id="slider1" type="range" min="1" max="25" step="1" value="12"/></div>
+
+
+<script type="text/javascript">
+		
+		var width = 1080,
+	    height = 200,
+	    padding = 16;
+
+	var svg = d3.select("#svg")
+	    .append("svg")
+	    .attr("width", width)
+	    .attr("height", height);
+	//2nd bsr chat
+
+	var svg1 = d3.select("#svg1")
+	    .append("svg")
+	    .attr("width", width)
+	    .attr("height", height);
+
+
+
+	var data = d3.range(1, 51);
+
+	//2nd
+	var data1 = d3.range(1, 26);
+
+	var xScale = d3.scaleBand()
+	    .domain(data)
+	    .range([padding * 2, width - padding])
+	    .padding(0.2);
+
+	//2nd
+	var xScale1 = d3.scaleBand()
+	    .domain(data1)
+	    .range([padding * 2, width - padding])
+	    .padding(0.2);
+
+	var yScale = d3.scaleLinear()
+	    .domain([0, d3.max(data, d => d)])
+	    .range([height - padding, padding]);
+
+	//2nd
+	var yScale1 = d3.scaleLinear()
+	    .domain([0, d3.max(data1, d => d)])
+	    .range([height - padding, padding]);
+
+	var bars = svg.selectAll(".bars")
+	    .data(data)
+	    .enter()
+	    .append("rect")
+	    .attr("x", d => xScale(d))
+	    .attr("width", xScale.bandwidth())
+	    .attr("y", d => yScale(d))
+	    .attr("height", d => height - padding - yScale(d))
+	    .attr("fill", (d => d3.select("#slider").node().value == d ? "firebrick" : "teal"));
+
+
+	//2nd
+	var bars1 = svg1.selectAll(".bars")
+	    .data(data1)
+	    .enter()
+	    .append("rect")
+	    .attr("x", d => xScale(d * 2))
+	    .attr("width", xScale1.bandwidth())
+	    .attr("y", d => yScale(d))
+	    .attr("height", d => height - padding - yScale(d))
+	    .attr("fill", (d => d3.select("#slider1").node().value == d ? "firebrick" : "teal"));
+
+	var xAxis = d3.axisBottom(xScale);
+	var yAxis = d3.axisLeft(yScale);
+
+
+	//2nd
+	var xAxis1 = d3.axisBottom(xScale1);
+	var yAxis1 = d3.axisLeft(yScale1);
+
+	var gX = svg.append("g")
+	    .attr("transform", "translate(0," + (height - padding) + ")")
+	    .call(xAxis);
+
+	//2nd
+	var gX1 = svg1.append("g")
+	    .attr("transform", "translate(0," + (height - padding) + ")")
+	    .call(xAxis1);
+
+
+
+	var gY = svg.append("g")
+	    .attr("transform", "translate(" + padding * 2 + ",0)")
+	    .call(yAxis);
+	
+	//2nd
+    var gY1 = svg1.append("g")
+    .attr("transform", "translate(" + padding * 2 + ",0)")
+    .call(yAxis);
+
+	
+
+	d3.select("#slider").on("input", function() {
+	    var currentValue = this.value;
+	    yScale.domain([0, currentValue * 2])
+	    bars.attr("y", d => yScale(d))
+	        .attr("height", d => height - padding - yScale(d))
+	        .attr("fill", (d => currentValue == d ? "firebrick" : "teal"));
+	    gY.call(yAxis);
+
+
+//2nd
+	    var currentValue = this.value;
+	    yScale1.domain([0, currentValue * 2])
+	    bars1.attr("y", d => yScale(d))
+	        .attr("height", d => height - padding - yScale(d))
+	        .attr("fill", (d => currentValue == d ? "firebrick" : "teal"));
+	    gY1.call(yAxis1);
+	})
+
+	d3.select("#slider1").on("input", function() {
+	    var currentValue = this.value;
+	    yScale.domain([0, currentValue * 2])
+	    bars.attr("y", d => yScale(d))
+	        .attr("height", d => height - padding - yScale(d))
+	        .attr("fill", (d => currentValue == d ? "firebrick" : "teal"));
+	    gY.call(yAxis);
+
+
+//2nd
+	    var currentValue = this.value;
+	    yScale1.domain([0, currentValue * 2])
+	    bars1.attr("y", d => yScale(d))
+	        .attr("height", d => height - padding - yScale(d))
+	        .attr("fill", (d => currentValue == d ? "firebrick" : "teal"));
+	    gY1.call(yAxis1);
+	})
+	</script>
+
+</body>
+</html>

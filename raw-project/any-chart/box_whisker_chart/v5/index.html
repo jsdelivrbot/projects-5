@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+        
+        
+        <script src="data.js"></script>
+        
+        
+        <title>Performance vs peer universe</title>
+        
+    </head>
+    <body>
+    	<div class="chart-header">
+        	<h2>Bristol Gate gross vs peer universe</h2>
+            <p><span class="bglg"></span> <span>Bristol Gate</span>  <span class="smplg"></span> <span>S&P 500 TRI</span></p>
+        </div>
+        <div id="container"></div>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <style>
+		@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+         html, body, #container {
+			 font-family: 'Noto Sans', sans-serif;
+             width: 100%;
+             height:calc(100% - 30px);
+             margin: 0;
+             padding: 0;
+         }
+		 .chart-header{
+			 text-align:center;
+			 }
+		.chart-header h2{
+			font-size:18px;
+			font-weight:normal;
+			color:#777;
+			margin:5px 0;}
+		.chart-header p{
+			font-size:14px;
+			font-weight:normal;
+			color:#999;
+			margin:0 auto;
+			max-width:220px;
+			}
+		.chart-header p span{
+			float:left;}
+		.bglg{
+			width:15px;
+			margin-right:5px;
+			height:15px;
+			border-radius:50%;
+			background:#0D2747;
+			float:left;}
+		.smplg{
+			width:15px;
+			height:15px;
+			margin-right:5px;
+			border-radius:50%;
+			margin-left:20px;
+			background:#6D94AD;
+			float:left;}
+		 #container path.change{
+			 fill:#9cbb59;
+			 stroke:#9cbb59;}
+		#container path.bristolgate{
+			 fill:#0D2747;
+			 stroke:#0D2747;
+			 stroke-width:8px;}
+		#container path.smp{
+			 fill:#6D94AD;
+			 stroke:#6D94AD;
+			 stroke-width:8px;}
+		.ctitle{
+			display:none;}
+		.anychart-credits{
+			display:none;}
+        </style>
+        <script type="text/javascript">
+         
+anychart.onDocumentReady(function () {
+    // create box chart
+    chart = anychart.box();
+
+    // set container id for the chart
+    chart.container('container');
+
+    // set chart title text settings
+    chart.title('Bristol Gate US Equity Strategy Trailing Period Peer Comparison Returns');
+
+    // set axes settings
+    chart.xAxis().staggerMode(true);
+
+    // The data used in this sample can be obtained from the CDN
+    // http://cdn.anychart.com/samples-data/box-chart/box-and-whisker-chart/data.js
+    // create box chart series
+    var series = chart.box(getData());
+    series.whiskerWidth('20%');
+	
+	// adjust tooltips content for the first series
+    /*series.tooltip().contentFormatter(function() {
+    return 'Range: ' + this.x + '\n' + 'Medium: ' + (this.q3+this.q1)/2 + '\n' + 'Lowest1: ' + this.lowest + '\n' +'Q1: ' + this.q1 + '\n' +'Median: ' + this.median + '\n' +'Q3: ' + this.q3 + '\n' +'Highest: ' +this.highest + '\n' +'Period: February 2015';
+    });*/
+	series.tooltip().contentFormatter(function() {
+    return '5th Percentile: ' + this.lowest + '\n' +'25th Percentile: ' + this.q1 + '\n' +'Median: ' + this.median + '\n' +'75th Percentile: ' + this.q3 + '\n' +'95th Percentile: ' +this.highest;
+    });
+
+    // initiate chart drawing
+    chart.draw();
+});
+
+$(document).ready(function(){
+	 $("g[data-ac-wrapper-id=48] path").addClass("change");
+	 $("g[data-ac-wrapper-id=10]").addClass("ctitle");
+	 $("g[data-ac-wrapper-id=86] path:nth-child(2n-1)").addClass("bristolgate");
+	 $("g[data-ac-wrapper-id=86] path:nth-child(2n)").addClass("smp");
+	 var row_str = '% ';
+	 $("g[data-ac-wrapper-id=35] tspan").append(row_str);
+	 
+});
+
+    
+        </script>
+        
+    </body>
+</html>

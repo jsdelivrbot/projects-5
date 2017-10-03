@@ -1,0 +1,1 @@
+[27-Aug-2017 08:43:07 UTC] PHP Fatal error:  Call to undefined function is_user_logged_in() in /home/duffyoungcp/public_html/modified-project/d3-object/globe/v5/index.php on line 91

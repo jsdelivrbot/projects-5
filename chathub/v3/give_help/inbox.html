@@ -1,0 +1,490 @@
+﻿<!DOCTYPE html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta name="keywords" content="admin template, admin dashboard, inbox templte, calendar template, form validation">
+<meta name="author" content="DazeinCreative">
+<meta name="description" content="ORB - Powerfull and Massive Admin Dashboard Template with tonns of useful features">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chat Hub</title>
+<link href="css/styles.css" rel="stylesheet" type="text/css">
+
+<link rel="shortcut icon" type="image/x-icon" href="../images/favicon.jpg" />
+<script type="text/javascript" src="js/vendors/modernizr/modernizr.custom.js"></script>
+</head>
+
+<body>
+
+<!--Smooth Scroll-->
+<div class="smooth-overflow">
+    <!--Navigation-->
+  
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <a class="navbar-brand text-blue" href="../index.html" style="padding:0;"><img style="max-width:100%;" src="../images/scotia-logo.png" alt=""></a> </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" id="menuLogin"> <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign In</a>
+            <div class="dropdown-menu">
+              <form action="index.html" id="login-form" class="orb-form">
+                <fieldset>
+                  <section>
+                    <div class="row">
+                      <div class="col col-12">
+                        <label class="input"> <i class="icon-append fa fa-user"></i>
+                          <input type="email" name="email" placeholder="Login">
+                        </label>
+                      </div>
+                    </div>
+                  </section>
+                  <section>
+                    <div class="row">
+                      <div class="col col-12">
+                        <label class="input"> <i class="icon-append fa fa-lock"></i>
+                          <input type="password" name="password" placeholder="Password">
+                        </label>
+                        <div class="note"><a href="#" class="modal-opener">Forgot password?</a></div>
+                      </div>
+                    </div>
+                  </section>
+                  <section>
+                    <div class="row">
+                      <div class="col col-12">
+                        <label class="checkbox">
+                          <input type="checkbox" name="remember" checked>
+                          <i></i>Keep me logged in</label>
+                      </div>
+                    </div>
+                  </section>
+                </fieldset>
+                <button type="submit" class="btn btn-default">Sign in</button>
+                <a href="registration.html" class="btn">Register</a>
+              </form>
+            </div>
+          </li>
+        </ul>
+        <!--/Sign In Form--> 
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+    <!-- /.container-fluid --> 
+  </nav>
+  
+  <!--/Navigation-->
+    
+    <!--/Navigation--> 
+    
+    <!--MainWrapper-->
+    <div class="main-wrap"> 
+      
+      
+      <!--Main Menu-->
+      <div class="responsive-admin-menu">
+        <div class="responsive-menu">Scotia Bank Advice Hub
+          <div class="menuicon"><i class="fa fa-angle-down"></i></div>
+        </div>
+      	<ul id="menu">
+        	<li><a href="inbox.html"><i class="fa fa-envelope"></i> Inbox</a></li>
+        	<li><a href="important.html"><i class="fa fa-bolt"></i> Important</a></li>
+        	<li><a href="sent-mail.html"><i class="fa fa-rocket"></i> Sent Mail</a></li>
+            <li><a href="draf.html"><i class="fa fa-exchange"></i> Draf</a></li>
+        	<li><a href="trash.html"><i class="fa fa-trash-o"></i> Trash</a></li>
+        </ul>
+      </div>
+      <!--/MainMenu-->
+      
+      <div class="content-wrapper"> 
+        <!--Breadcrumb-->
+        <div class="breadcrumb clearfix">
+          <ul>
+            <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+            <li><a href="index.html">Dashboard</a></li>
+            <li class="active">Inbox</li>
+          </ul>
+        </div>
+        <!--/Breadcrumb-->
+        
+        <!--<div class="page-header">
+          <h1>Conversations<small>Advisors</small></h1>
+        </div>-->
+        
+        <div class="row">
+        	
+            <div id="advisor-col" class="col-sm-6 col-md-6 col-lg-6">
+                <div class="powerwidget dark-blue" style="margin-bottom:0;">
+                    <header role="heading">
+                      <h2>Clients</h2>
+                    </header>
+                </div>
+                <div class="advisor-block" style="margin-top:0;">
+                
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/client.jpg" alt="User"/> <span class="badge msg-count">5</span></div>
+                        <h3>Anton Durant <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/1.jpg" alt="User"/> </div>
+                        <h3>David Jack <small class="pull-right sm-nobefore"> <span class="btn btn-warning status-btn"></span> 02:30 pm</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/Successful-Women-Entreprenuers.jpg" alt="User"/> <span class="badge msg-count">3</span></div>
+                        <h3>Andrilla <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/client.jpg" alt="User"/> </div>
+                        <h3>Anton Durant <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/1.jpg" alt="User"/> </div>
+                        <h3>David Jack <small class="pull-right sm-nobefore"> <span class="btn btn-warning status-btn"></span> 02:30 pm</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/Successful-Women-Entreprenuers.jpg" alt="User"/> <span class="badge msg-count">2</span></div>
+                        <h3>Andrilla <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/client.jpg" alt="User"/> </div>
+                        <h3>Anton Durant <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/1.jpg" alt="User"/> </div>
+                        <h3>David Jack <small class="pull-right sm-nobefore"> <span class="btn btn-warning status-btn"></span> 02:30 pm</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    <div class="tiny-user-block clearfix" style="padding-right:10px;">
+                        <div class="user-img"> <img src="../images/Successful-Women-Entreprenuers.jpg" alt="User"/> </div>
+                        <h3>Andrilla <small class="pull-right sm-nobefore"> <span class="btn btn-success status-btn"></span> Online</small></h3>
+                        <p class="advisor-info">Lorem ipsum dolor sit amet</p>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+            <div style="display:none;" class="chat-col col-sm-6 col-md-6 col-lg-6">
+                <div class="advisor-block">
+                
+                    <!-- New widget -->
+                    <div class="inner-spacer">
+                      <div class="chat-container">
+                        <div class="top-buttons clearfix" style="padding-left:10px;">
+                          <h2 class="margin-0px pull-left">Chat</h2>
+                          <span class="badge">25</span>
+                          <div class="btn-group btn-group-sm pull-right"> <a id="close-chat" class="btn btn-default"><i class="fa fa-thumbs-down"></i> <span class="hidden-xs">Leave</span></a> <a class="btn btn-default"><i class="fa fa-times-circle"></i> <span class="hidden-xs">Clear</span></a></div>
+                        </div>
+                        
+                        <div class="chat-container">
+                          <div class="chat-pusher">
+                            <div class="chat-content"><!-- this is the wrapper for the content -->
+                              <div class="nano"><!-- this is the nanoscroller -->
+                                <div class="nano-content">
+                                  <div class="chat-content-inner"><!-- extra div for emulating position:fixed of the menu --> 
+                                    
+                                    <!-- Top Navigation -->
+                                    
+                                    <div class="clearfix">
+                                      <div class="chat-messages">
+                                        <ul>
+                                          <li class="left clearfix">
+                                            <div class="user-img pull-left"> <img src="../images/client.jpg" alt="User Avatar" /> </div>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Anton Durant </span><span class="name"></span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div>
+                                              <p>Hi</p>
+                                            </div>
+                                          </li>
+                                          
+                                          
+                                          <li class="right clearfix"><span class="user-img pull-right"> <img src="../images/favicon.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"><span class="name">Camilla Mele</span><small class="badge"><i class="fa fa-clock-o"></i>15 mins ago</small></div>
+                                              <p>Nunc ipsum dui, tempus id sagittis eu?</p>
+                                              <img src="../images/tangy-free-psd-button-set.jpg" alt="">
+                                            </div>
+                                          </li>
+                                          <li class="left clearfix"><span class="user-img pull-left"> <img src="../images/client.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Anton Durant </span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div>
+                                              <img src="../images/ans.png" style="max-width:100%;" alt="">
+                                            </div>
+                                          </li>
+                                          <li class="left clearfix">
+                                            <div class="user-img pull-left"> <img src="../images/client.jpg" alt="User Avatar" /> </div>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Anton Durant </span><span class="name"></span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div>
+                                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent porttitor nulla vitae interdum fermentum. Ut in vulputate neque. Praesent luctus lacus a dolor tempus pellentesque. Cras sit amet urna eu augue suscipit eleifend. Mauris mollis pharetra faucibus. Phasellus eu massa quam. Nunc id metus placerat neque feugiat commodo. </p>
+                                            </div>
+                                          </li>
+                                          <li class="right clearfix"><span class="user-img pull-right"> <img src="../images/favicon.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Camilla Mele</span><span class=" badge"><i class="fa fa-clock-o"></i>13 mins ago</span> </div>
+                                              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                dolor, quis ullamcorper ligula sodales. </p>
+                                            </div>
+                                          </li>
+                                          <li class="right clearfix"><span class="user-img pull-right"> <img src="../images/favicon.jpg" alt="User Avatar" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Camilla Mele</span><span class=" badge"><i class="fa fa-clock-o"></i>13 mins ago</span> </div>
+                                              <img src="../images/link.jpg" style="max-width:100%;" alt="">
+                                            </div>
+                                          </li>
+                                          
+                                          <li class="left clearfix"><span class="user-img pull-left"> <img src="../images/client.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Anton Durant </span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span> </div>
+                                              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                dolor, quis ullamcorper ligula sodales. </p>
+                                            </div>
+                                          </li>
+                                          <li class="right clearfix"><span class="user-img pull-right"> <img src="../images/favicon.jpg" alt="User Avatar" class="img-circle" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Camilla Mele</span> <span class="badge"><i class="fa fa-clock-o"></i>14 mins ago</span></div>
+                                              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                                dolor, quis ullamcorper ligula sodales. </p>
+                                            </div>
+                                          </li>
+                                          <li class="right clearfix"><span class="user-img pull-right"> <img src="../images/favicon.jpg" alt="User Avatar" /> </span>
+                                            <div class="chat-body clearfix">
+                                              <div class="header"> <span class="name">Camilla Mele</span><span class=" badge"><i class="fa fa-clock-o"></i>13 mins ago</span> </div>
+                                              <img src="../images/link2.jpg" style="max-width:100%;" alt="">
+                                            </div>
+                                          </li>
+                                        </ul>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  
+                                  <!-- /chat-content-inner --> 
+                                </div>
+                              </div>
+                              
+                              <!-- /nano --> 
+                              
+                            </div>
+                            
+                            <!-- /chat-content --> 
+                          </div>
+                          <!-- /chat-pusher --> 
+                        </div>
+                      </div>
+                      <!-- /chat-container--> 
+                      
+                      <!--Chat-form -->
+                      <div class="chat-message-form">
+                        <div class="row">
+                          <div class="col-md-12">
+                            <textarea placeholder="Write Your Message Here" class="form-control margin-bottom" rows="2"></textarea>
+                          </div>
+                          <div class="col-md-8 col-sm-8 col-xs-8">
+                            <div class="btn-group">
+                              <button class=" btn btn-default"><i class="fa fa-location-arrow"></i></button>
+                              <button class=" btn btn-default"><i class="fa fa-camera"></i></button>
+                              <button class=" btn btn-default"><i class="fa fa-music"></i></button>
+                              <button class=" btn btn-default"><i class="fa fa-file"></i></button>
+                            </div>
+                          </div>
+                          <div class="col-md-4 col-sm-4 col-xs-4">
+                            <button class="btn btn-info pull-right" type="button">Send!</button>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <!-- /Chat-form --> 
+                      
+                    </div>
+                    <!-- End Widget --> 
+                    
+                </div>
+            </div>
+            <div  style="display:none;" class="chat-col col-sm-2 col-md-2 col-lg-2"> 
+            
+            <!-- New widget -->
+            <div class="powerwidget dark-blue" data-widget-editbutton="false">
+              <header>
+                <h2>Conversation Obj</h2>
+              </header>
+              <div class="inner-spacer advisor-block" style="margin-top:0;"">
+                <div class="chat-container">
+
+                  <div class="dd nestable2">
+                      <ol class="dd-list mobj">
+                        <li class="dd-item" data-toggle="modal" data-target="#myModal">
+                          <div class="dd-handle">Object 1</div>
+                        </li>
+                        <li class="dd-item" data-toggle="modal" data-target="#myModal">
+                          <div class="dd-handle">Object 2</div>
+                        </li>
+                        <li class="dd-item" data-toggle="modal" data-target="#myModal">
+                          <div class="dd-handle">Object 3</div>
+                        </li>
+                        <li class="dd-item" data-toggle="modal" data-target="#myModal">
+                          <div class="dd-handle">Object 4</div>
+                        </li>
+                        <li class="dd-item" data-toggle="modal" data-target="#myModal">
+                          <div class="dd-handle">Object 5</div>
+                        </li>
+                        <li class="dd-item" data-toggle="modal" data-target="#myModal">
+                          <div class="dd-handle">Object 6</div>
+                        </li>
+                      </ol>
+                  </div>
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Object 1</h4>
+                      </div>
+                      <div class="modal-body">
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                            Option one is this and that&mdash;be sure to include why it's great
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                            Option two can be something else and selecting it will deselect option one
+                          </label>
+                        </div>
+                        <div class="radio">
+                          <label>
+                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3" >
+                            Option three is disabled
+                          </label>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-info">Start Chat</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  
+                </div>
+                
+                
+              </div>
+            </div>
+            <!-- End Widget --> 
+            
+          </div>
+        </div>
+        
+      </div>
+      <!-- /Widgets Row End Grid--> 
+    </div>
+    <!-- / Content Wrapper --> 
+  <!--/MainWrapper--> 
+  
+</div>
+<!--/Smooth Scroll--> 
+
+
+<!-- scroll top -->
+<div class="scroll-top-wrapper hidden-xs">
+    <i class="fa fa-angle-up"></i>
+</div>
+<!-- /scroll top -->
+
+
+
+<!--Modals-->
+
+<!--Power Widgets Modal-->
+<div class="modal" id="delete-widget">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <i class="fa fa-lock"></i> </div>
+      <div class="modal-body text-center">
+        <p>Are you sure to delete this widget?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="trigger-deletewidget-reset">Cancel</button>
+        <button type="button" class="btn btn-primary" id="trigger-deletewidget">Delete</button>
+      </div>
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!-- /.modal --> 
+
+<!--Sign Out Dialog Modal-->
+<div class="modal" id="signout">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <i class="fa fa-lock"></i> </div>
+      <div class="modal-body text-center">Are You Sure Want To Sign Out?</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" id="yesigo">Ok</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content --> 
+  </div>
+  <!-- /.modal-dialog --> 
+</div>
+<!-- /.modal --> 
+
+
+<!--Scripts--> 
+<!--JQuery--> 
+<script type="text/javascript" src="js/vendors/jquery/jquery.min.js"></script> 
+<script type="text/javascript" src="js/vendors/jquery/jquery-ui.min.js"></script> 
+
+<!--Fullscreen--> 
+<script type="text/javascript" src="js/vendors/fullscreen/screenfull.min.js"></script> 
+
+<!--NanoScroller--> 
+<script type="text/javascript" src="js/vendors/nanoscroller/jquery.nanoscroller.min.js"></script> 
+
+<!--Sparkline--> 
+<script type="text/javascript" src="js/vendors/sparkline/jquery.sparkline.min.js"></script> 
+
+<!--Horizontal Dropdown--> 
+<script type="text/javascript" src="js/vendors/horisontal/cbpHorizontalSlideOutMenu.js"></script> 
+<script type="text/javascript" src="js/vendors/classie/classie.js"></script> 
+
+<!--PowerWidgets--> 
+<script type="text/javascript" src="js/vendors/powerwidgets/powerwidgets.min.js"></script> 
+
+<!--Bootstrap--> 
+<script type="text/javascript" src="js/vendors/bootstrap/bootstrap.min.js"></script> 
+
+<!--ToDo--> 
+<script type="text/javascript" src="js/vendors/todos/todos.js"></script> 
+
+<!--Main App--> 
+<script type="text/javascript" src="js/scripts.js"></script>
+
+<script type="text/javascript">
+	$(".advisor-block .tiny-user-block").click(function(){
+		$(".tiny-user-block").removeClass("active");
+		$(".responsive-admin-menu").addClass("sidebar-toggle");
+		$(".content-wrapper").addClass("main-content-toggle-left");
+		$("#advisor-col").addClass("col-sm-4 col-md-4 col-lg-4");
+		$(this).addClass("active");
+		$("#advisor-col").removeClass("col-sm-6 col-md-6 col-lg-6");
+		$(".chat-col").show(500);
+	});
+</script>
+
+<!--/Scripts-->
+
+</body>
+</html>

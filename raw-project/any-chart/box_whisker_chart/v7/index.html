@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Performance vs peer universe</title>
+<style>
+
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+/*@import url('https://fonts.google.com/css?family=PT+Serif');*/
+@font-face {
+            font-family: "PT Serif";
+            src: url('fonts/PTF55F.ttf') format("truetype");
+        }
+ html, body, #container {
+	 font-family: 'Noto Sans', sans-serif;
+     width: 100%;
+     height:calc(100% - 30px);
+     margin: 0;
+     padding: 0;
+ }
+ h2 {
+ 	font-family: 'PT Serif', serif;
+ 	font-size:24px;
+	font-weight:normal;
+	color:#777;
+	margin:5px 0;
+ }
+ svg{
+ 	font-family: 'Noto Sans', sans-serif;
+ }
+
+.box {
+  font: 10px sans-serif;
+}
+.box rect{
+	fill: #9CBB59;
+}
+.box line {
+  
+  stroke: #63841D;
+  stroke-width: 1px;
+}
+
+.box .center {
+  stroke-dasharray: 3,3;
+}
+
+.box .outlier {
+  fill: #6D94AD;
+  /*stroke: #000;*/
+}
+
+.axis {
+  font: 12px sans-serif;
+}
+ 
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+ 
+.x.axis path { 
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+
+.chart-header{
+			 text-align:center;
+			 }
+		/*.chart-header h2{
+			font-size:18px;
+			font-weight:normal;
+			color:#777;
+			margin:5px 0;}*/
+.chart-header p{
+	font-size:14px;
+	font-weight:normal;
+	color:#999;
+	margin:0 auto;
+	max-width:220px;
+	}
+.chart-header p span{
+	float:left;}
+.bglg{
+	width:15px;
+	margin-right:5px;
+	height:15px;
+	border-radius:50%;
+	background:#0D2747;
+	float:left;}
+
+#bgNet{
+	width:25px;
+	/*margin-right:5px;*/
+	height:25px;
+	border-radius:50%;
+	/*background:#0D2747;*/
+	float:left;
+}
+.smplg{
+	width:15px;
+	height:15px;
+	margin-right:5px;
+	border-radius:50%;
+	margin-left:20px;
+	background:#6D94AD;
+	float:left;}
+
+	.point{
+		width: 10px;
+		height: 10px;
+	}
+
+	.toolTip {
+            position: absolute;
+            display: none;
+            min-width: 100px;
+            height: auto;
+            background: none repeat scroll 0 0 #000;
+            color: #fff;
+            opacity: 0.6;
+            border: 1px solid #000;
+            padding: 14px;
+            text-align: center;
+            font-size: 15px;
+        }
+
+</style>
+</head>
+<body>
+	<div class="chart-header">
+    	<h2>Bristol Gate gross vs peer universe</h2>
+        <p><span class="bglg"></span> <span>BG gross</span>  <span class="smplg"></span> <span>S&P 500 TRI</span></p>
+       <p style="text-align: left;"><svg width="25" height="25">
+		  <polygon fill="#0D2747" stroke="#0D2747" stroke-width="1"
+		    points="00,30
+		           10,10
+		           20,30" />
+		</svg>BG net</p>
+    </div>
+    <center>
+    <div id="cen">
+
+    	
+    </div>
+    </center>
+<!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<!-- <script src="d3.v4.min.js"></script> -->
+<script src="box.js"></script>
+<script>
+var labels = true; // show the text labels beside individual boxplots?
+
+var margin = {top: 30, right: 50, bottom: 70, left: 50};
+var  width = 900 - margin.left - margin.right;
+var height = 550 - margin.top - margin.bottom;
+	
+var min = Infinity,
+    max = -Infinity;
+	
+// parse in the data	
+d3.csv("out.csv", function(error, csv) {
+
+});
+d3.csv("data.csv", function(error, csv) {
+	// using an array of arrays with
+	// data[n][2] 
+	// where n = number of columns in the csv file 
+	// data[i][0] = name of the ith column
+	// data[i][1] = array of values of ith column
+
+	var data = [];
+	data[0] = [];
+	data[1] = [];
+	data[2] = [];
+	data[3] = [];
+	data[4] = [];
+	data[5] = [];
+	data[6] = [];
+	data[7] = [];
+	data[8] = [];
+	// add more rows if your csv file has more columns
+
+	// add here the header of the csv file
+	data[0][0] = "Q1";
+	data[1][0] = "Q2";
+	data[2][0] = "Q3";
+	data[3][0] = "Q4";
+	data[4][0] = "Q5";
+	data[5][0] = "Q6";
+	data[6][0] = "Q7";
+	data[7][0] = "Q8";
+	data[8][0] = "Q9";
+	// add more rows if your csv file has more columns
+
+	data[0][1] = [];
+	data[1][1] = [];
+	data[2][1] = [];
+	data[3][1] = [];
+	data[4][1] = [];
+	data[5][1] = [];
+	data[6][1] = [];
+	data[7][1] = [];
+	data[8][1] = [];
+  
+	csv.forEach(function(x) {
+		var v1 = Math.floor(x.Q1),
+			v2 = Math.floor(x.Q2),
+			v3 = Math.floor(x.Q3),
+			v4 = Math.floor(x.Q4),
+			v5 = Math.floor(x.Q5),
+			v6 = Math.floor(x.Q6),
+			v7 = Math.floor(x.Q7),
+			v8 = Math.floor(x.Q8);
+			v9 = Math.floor(x.Q9);
+			// add more variables if your csv file has more columns
+			
+		var rowMax = Math.max(v1, Math.max(v2, Math.max(v3,Math.max(v4,Math.max(v5,Math.max(v6,Math.max(v7,v8)))))));
+		var rowMin = Math.min(v1, Math.min(v2, Math.min(v3,Math.min(v4,Math.min(v5,Math.min(v6,Math.max(v7,v8)))))));
+
+		data[0][1].push(v1);
+		data[1][1].push(v2);
+		data[2][1].push(v3);
+		data[3][1].push(v4);
+		data[4][1].push(v5);
+		data[5][1].push(v6);
+		data[6][1].push(v7);
+		data[7][1].push(v8);
+		data[8][1].push(v9);
+		 // add more rows if your csv file has more columns
+		 
+		if (rowMax > max) max = rowMax;
+		if (rowMin < min) min = rowMin;	
+	});
+  
+	var chart = d3.box()
+		.whiskers(iqr(1.5))
+		.height(height)	
+		.domain([min-10, max+10])
+		.showLabels(labels);
+
+	var svg = d3.select("body").select("#cen").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.attr("class", "box")    
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+		.style("align","center");
+	
+	// the x-axis
+	var x = d3.scale.ordinal()	   
+		.domain( data.map(function(d) { console.log(d); return d[0] } ) )	    
+		.rangeRoundBands([0 , width], 0.3, 0.3); 		
+
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom")
+		//.tickValues(['0','May - Dec 2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', 'Jan - Jun 2017'])
+    	.tickFormat(function(d, i){ 
+    		if(d == "Q1")
+    			return "May - Dec 2009";
+    		else if(d == "Q2")
+    			return 2010;
+    		else if(d == "Q3")
+    			return 2011;
+    		else if(d == "Q4")
+    			return 2012;
+    		else if(d == "Q5")
+    			return 2013;
+    		else if(d == "Q6")
+    			return 2014;
+    		else if(d == "Q7")
+    			return 2015;
+    		else if(d == "Q8")
+    			return 2016;
+    		else if(d == "Q9")
+    			return "Jan - Jun 2017";
+    		//else 
+
+    	});
+
+	// the y-axis
+	var y = d3.scale.linear()
+		.domain([min-10, max+10])
+		.range([height + margin.top, 0 + margin.top]);
+	
+	var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    .tickFormat(function(d, i){ return d+"%"; });;
+
+	// draw the boxplots	
+	svg.selectAll(".box")	   
+      .data(data)
+	  .enter().append("g")
+		.attr("transform", function(d) { return "translate(" +  x(d[0])  + "," + margin.top + ")"; } )
+      .call(chart.width(x.rangeBand())); 
+	
+	      
+	// add a title
+	// svg.append("text")
+ //        .attr("x", (width / 2))             
+ //        .attr("y", 0 + (margin.top / 2))
+ //        .attr("text-anchor", "middle")  
+ //        .style("font-size", "18px") ;
+        //.style("text-decoration", "underline")  
+        //.text("Bristol Gate gross vs peer universe");
+ 
+	 // draw y axis
+	svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+		.append("text") // and text1
+		  .attr("transform", "rotate(-90)")
+		  .attr("y", 6)
+		  .attr("dy", ".71em")
+		  .style("text-anchor", "end")
+		  .style("font-size", "16px"); 
+		  //.text("Revenue in $");		
+	
+	// draw x axis	
+	svg.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + (height  + margin.top + 0) + ")")
+      .call(xAxis)
+	  .append("text")             // text label for the x axis
+        .attr("x", (width / 2) )
+        .attr("y",  10 )
+		.attr("dy", ".71em")
+        .style("text-anchor", "middle")
+		.style("font-size", "16px") ;
+        //.text("Quarter"); 
+
+
+    d3.tsv("out.tsv",function(d) { 
+
+    	d.x = +d.x;
+    	d.Q1 = +d.Q1;
+    	d.Q2 = +d.Q2;
+    	d.low = +d.low;
+    	d.qun1 = +d.qun1;
+    	d.median = +d.median;
+    	d.qun3 = +d.qun3;
+    	d.high = +d.high;
+    	d.title = +d.title;
+    	return d;
+    }, function(error, data) {
+    	if (error) throw error;
+    	// var data2 = data.filter(function(d){
+    		
+    	// });
+
+    	//svg.append("g")
+    	var tooltip = d3.select("body").append("div").attr("class", "toolTip");
+    	
+		svg.selectAll("circles")
+			.data(data)
+			.enter()
+			.append("circle")
+			.attr("fill","#0D2747")
+			.attr("stroke","#0D2747")
+			.attr("r", 6)
+			.attr("cx", function (d) { return d.x; })
+			.attr("cy", function (d) { return y(d.Q1); })
+			.on("mousemove", function(d){
+				if(d.title == 2009){
+					d.title = "May - Dec 2009";
+				}
+				else if(d.title == 2017){
+					d.title = "Jan - Jun 2017";
+				}
+				else
+					d.title = d.title;
+                  tooltip
+                    .style("left", d3.event.pageX - 80 + "px")
+                    .style("top", d3.event.pageY - 190 + "px")
+                    .style("display", "inline-block")
+                    .html("<u>"+d.title+"</u>"+"<br> 5th percentile: "+ d.low + "<br> 25th percentile: " + d.qun1 +"<br> 50th percentile: "+ d.median +"<br> 75th percentile: "+ d.qun3 +"<br> 95th percentile: "+ d.high);
+              })
+              .on("mouseout", function(d){ tooltip.style("display", "none");});
+
+		svg.selectAll("circles")
+			.data(data)
+			.enter()
+			.append("circle")
+			.attr("fill","#6D94AD")
+			.attr("stroke","#6D94AD")
+			.attr("r", 6)
+			.attr("cx", function (d) { return d.x; })
+			.attr("cy", function (d) { return y(d.Q2); })
+			.on("mousemove", function(d){
+				if(d.title == 2009){
+					d.title = "May - Dec 2009";
+				}
+				else if(d.title == 2017){
+					d.title = "Jan - Jun 2017";
+				}
+				else
+					d.title = d.title;
+                  tooltip
+                    .style("left", d3.event.pageX - 80 + "px")
+                    .style("top", d3.event.pageY - 190 + "px")
+                    .style("display", "inline-block")
+                    .html("<u>"+d.title+"</u>"+"<br> 5th percentile: "+ d.low + "<br> 25th percentile: " + d.qun1 +"<br> 50th percentile: "+ d.median +"<br> 75th percentile: "+ d.qun3 +"<br> 95th percentile: "+ d.high );
+                    //
+              })
+              .on("mouseout", function(d){ tooltip.style("display", "none");});
+
+		svg.selectAll(".point")
+      		.data(data)
+    		.enter().append("path")
+		    .attr("class", "point")
+		    .attr("fill","#0D2747")
+		    .attr("d", d3.svg.symbol().type("triangle-up").size(90))
+		    .attr("transform", function(d) { return "translate(" + (d.x - 10) + "," + y(d.y) + ")"; })
+		    .on("mousemove", function(d){
+		    	if(d.title == 2009){
+					d.title = "May - Dec 2009";
+				}
+				else if(d.title == 2017){
+					d.title = "Jan - Jun 2017";
+				}
+				else
+					d.title = d.title;
+                  tooltip
+                    .style("left", d3.event.pageX - 80 + "px")
+                    .style("top", d3.event.pageY - 190 + "px")
+                    .style("display", "inline-block")
+                    .html("<u>"+d.title+"</u>"+"<br> 5th percentile: "+ d.low + "<br> 25th percentile: " + d.qun1 +"<br> 50th percentile: "+ d.median +"<br> 75th percentile: "+ d.qun3 +"<br> 95th percentile: "+ d.high);
+              })
+              .on("mouseout", function(d){ tooltip.style("display", "none");});
+
+
+        svg.selectAll(".box")
+        	.data(data)
+        	.on("mousemove", function(d){
+		    	if(d.title == 2009){
+					d.title = "May - Dec 2009";
+				}
+				else if(d.title == 2017){
+					d.title = "Jan - Jun 2017";
+				}
+				else
+					d.title = d.title;
+                  tooltip
+                    .style("left", d3.event.pageX - 80 + "px")
+                    .style("top", d3.event.pageY - 190 + "px")
+                    .style("display", "inline-block")
+                    .html("<u>"+d.title+"</u>"+"<br> 5th percentile: "+ d.low + "<br> 25th percentile: " + d.qun1 +"<br> 50th percentile: "+ d.median +"<br> 75th percentile: "+ d.qun3 +"<br> 95th percentile: "+ d.high);
+              })
+              .on("mouseout", function(d){ tooltip.style("display", "none");});
+});
+
+});
+
+// Returns a function to compute the interquartile range.
+function iqr(k) {
+  return function(d, i) {
+    var q1 = d.quartiles[0],
+        q3 = d.quartiles[2],
+        iqr = (q3 - q1) * k,
+        i = -1,
+        j = d.length;
+    while (d[++i] < q1 - iqr);
+    while (d[--j] > q3 + iqr);
+    return [i, j];
+  };
+}
+
+</script>
+<!-- </center> -->
+</body>
+</html>

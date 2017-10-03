@@ -1,0 +1,203 @@
+
+.legendMarker{
+  margin:3px;
+  height:1px;
+  width:1px;
+  border-style: solid;
+  border-width: 5px;
+}
+
+/*Browsers won't print background-colors.  Legend markers are important to maintain on print-  so border is used to form the block element */
+
+
+/***general palette***/
+.legendMarker_general_1{border-color: #001A7A; background-color: #001A7A;}
+.legendMarker_general_2{border-color: #1450D2; background-color: #1450D2;}
+.legendMarker_general_3{border-color: #7799cf; background-color: #7799cf;}
+.legendMarker_general_4{border-color: #009BFA; background-color: #009BFA;}
+.legendMarker_general_5{border-color: #8bc3ed; background-color: #8bc3ed;}
+.legendMarker_general_6{border-color: #b1d5f2; background-color: #b1d5f2;}
+.legendMarker_general_7{border-color: #d0e2af; background-color: #d0e2af;}
+.legendMarker_general_8{border-color: #bcd68d; background-color: #bcd68d;}
+.legendMarker_general_9{border-color: #8CC800; background-color: #8CC800;}
+.legendMarker_general_10{border-color: #00B760; background-color: #00B760;}
+.legendMarker_general_11{border-color: #9eca95; background-color: #9eca95;}
+/***generalContrast palette - 5 primary colors, for graphs needing greater contrast, line charts for exmaples***/
+.legendMarker_generalContrast_1{border-color: #008C82; background-color: #008C82;}
+.legendMarker_generalContrast_2{border-color: #00C1B5; background-color: #00C1B5;}
+.legendMarker_generalContrast_3{border-color: #0050D2; background-color: #0050D2;}
+.legendMarker_generalContrast_4{border-color: #560C70; background-color: #560C70;}
+.legendMarker_generalContrast_5{border-color: #AF23A5; background-color: #AF23A5;}
+
+
+
+
+
+
+
+/***trimark palette***/
+.legendMarker_tri_1{border-color: #001A7A; background-color: #001A7A;}
+.legendMarker_tri_2{border-color: #6423A0; background-color: #6423A0;}
+.legendMarker_tri_3{border-color: #a77dcc; background-color: #a77dcc;}
+.legendMarker_tri_4{border-color: #c4a9dd; background-color: #c4a9dd;}
+.legendMarker_tri_5{border-color: #dfa7db; background-color: #dfa7db;}
+.legendMarker_tri_6{border-color: #cf7ac8; background-color: #cf7ac8;}
+.legendMarker_tri_7{border-color: #be4fb7; background-color: #be4fb7;}
+.legendMarker_tri_8{border-color: #af23a5; background-color: #af23a5;}
+.legendMarker_tri_9{border-color: #f50091; background-color: #f50091;}
+.legendMarker_tri_10{border-color: #e733a7; background-color: #e733a7;}
+.legendMarker_tri_11{border-color: #560c70; background-color: #560c70;}
+
+/***powershares palette***/
+.legendMarker_ps_1{border-color: #001A7A; background-color: #001A7A;}
+.legendMarker_ps_2{border-color: #fa4526; background-color: #fa4526;}
+.legendMarker_ps_3{border-color: #fa6a51; background-color: #fa6a51;}
+.legendMarker_ps_4{border-color: #fb8f7c; background-color: #fb8f7c;}
+.legendMarker_ps_5{border-color: #fcb4a8; background-color: #fcb4a8;}
+.legendMarker_ps_6{border-color: #fdd9d3; background-color: #fdd9d3;}
+.legendMarker_ps_7{border-color: #fae344; background-color: #fae344;}
+.legendMarker_ps_8{border-color: #f9dd16; background-color: #f9dd16;}
+.legendMarker_ps_9{border-color: #f50091; background-color: #f50091;}
+.legendMarker_ps_10{border-color: #e733a7; background-color: #e733a7;}
+.legendMarker_ps_11{border-color: #d81e05; background-color: #d81e05;}
+
+/***invesco palette***/
+.legendMarker_inv_1{border-color: #001A7A; background-color: #001A7A;}
+.legendMarker_inv_2{border-color: #6675af; background-color: #6675af;}
+.legendMarker_inv_3{border-color: #99a3ca; background-color: #99a3ca;}
+.legendMarker_inv_4{border-color: #1450d2; background-color: #1450d2;}
+.legendMarker_inv_5{border-color: #009BFA; background-color: #009BFA;}
+.legendMarker_inv_6{border-color: #66c3fb; background-color: #66c3fb;}
+.legendMarker_inv_7{border-color: #99e6e1; background-color: #99e6e1;}
+.legendMarker_inv_8{border-color: #66d9d2; background-color: #66d9d2;}
+.legendMarker_inv_9{border-color: #33cdc3; background-color: #33cdc3;}
+.legendMarker_inv_10{border-color: #00C1B5; background-color: #00c1b5;}
+.legendMarker_inv_11{border-color: #008C82; background-color: #008c82;}
+
+
+/***intactive palette***/
+.legendMarker_int_1{border-color: #001A7A; background-color: #001A7A;}
+.legendMarker_int_2{border-color: #1450D2; background-color: #1450D2;}
+.legendMarker_int_3{border-color: #7195e3; background-color: #7195e3;}
+.legendMarker_int_4{border-color: #009bfa; background-color: #009bfa;}
+.legendMarker_int_5{border-color: #66c3fb; background-color: #66c3fb;}
+.legendMarker_int_6{border-color: #99d6fc; background-color: #99d6fc;}
+.legendMarker_int_7{border-color: #d0e999; background-color: #d0e999;}
+.legendMarker_int_8{border-color: #b9de66; background-color: #b9de66;}
+.legendMarker_int_9{border-color: #8cc800; background-color: #8cc800;}
+.legendMarker_int_10{border-color: #00b760; background-color: #00b760;}
+.legendMarker_int_11{border-color: #66d39f; background-color: #66d39f;}
+
+/***intactive palette for economic environment***/
+/***Inflationary growth***/
+.color_int_ig{color: #6423a0;}
+.legendMarker_int_ig_1{border-color: #6423a0; background-color: #6423a0; }
+.legendMarker_int_ig_2{border-color: #8a52ba; background-color: #8a52ba; }
+.legendMarker_int_ig_3{border-color: #a77dcc; background-color: #a77dcc; }
+.legendMarker_int_ig_4{border-color: #c4a9dd; background-color: #c4a9dd; }
+.legendMarker_int_ig_5{border-color: #e1d3ed; background-color: #e1d3ed; }
+
+/***Non-Inflationary growth***/
+.color_int_nig{color: #1450D2;}
+.legendMarker_int_nig_1{border-color: #1450D2; background-color: #1450D2; }
+.legendMarker_int_nig_2{border-color: #4373db; background-color: #4373db; }
+.legendMarker_int_nig_3{border-color: #7195e3; background-color: #7195e3; }
+.legendMarker_int_nig_4{border-color: #a0b8ec; background-color: #a0b8ec; }
+.legendMarker_int_nig_5{border-color: #d0dcf6; background-color: #d0dcf6; }
+.legendMarker_int_nig_6{border-color: #66c3fb; background-color: #66c3fb; }
+.legendMarker_int_nig_7{border-color: #99d6fc; background-color: #99d6fc; }
+
+/***Recessionary***/
+.color_int_rec{color: #8cc800;}
+.legendMarker_int_rec_1{border-color: #8cc800; background-color: #8cc800; }
+.legendMarker_int_rec_2{border-color: #a2d233; background-color: #a2d233; }
+.legendMarker_int_rec_3{border-color: #b9de66; background-color: #b9de66; }
+.legendMarker_int_rec_4{border-color: #d0e999; background-color: #d0e999; }
+.legendMarker_int_rec_5{border-color: #e7f4cc; background-color: #e7f4cc; }
+
+.legendMarker_int_cash_1{border-color: #999999; background-color: #999999; }
+
+/***Intactive Active/index-based mix***/
+.legendMarker_int_CCC{border-color: #cccccc; background-color: #cccccc; }
+.legendMarker_int_666{border-color: #666666; background-color: #666666; }
+.legendMarker_int_999{border-color: #999999; background-color: #999999; }
+.legendMarker_int_333{border-color: #333333; background-color: #333333; }
+
+/***Intactive Tactical ranges***/
+.legendMarker_int_current {
+  border-color: transparent transparent #42c4dd transparent;
+  border-style: solid;
+  border-width: 0px 5px 10px 5px;
+  margin:1px 0 0 -2px;
+  height: 0px;
+  width: 0px;
+}
+
+.legendMarker_int_current_ee{
+  border-color: transparent transparent #001A7A transparent;
+  border-style: solid;
+  border-width: 0px 5px 12px 5px;
+  height: 0px;
+  width: 0px;
+}
+
+.legendMarker_int_strategic{
+  background-color: #000;
+    height: 9px;
+    margin: 0 2px;
+    width: 2px;
+  }
+
+.legendMarker_int_strategic_ee{
+  height:8px;
+  border-right:4px solid #ccc;
+  width: 6px;
+  }
+
+.legendMarker_int_circle {
+  display: block;
+  width: 3px;
+  height: 3px;
+  border:3px solid #333;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  margin:0px auto;
+} 
+
+.highcharts-range-selector{
+  border: none!important;
+  text-align: center!important;
+  margin:1px 0 0 3px !important;
+  background-color: #FFFFFF!important;
+  color:#444444;
+}
+.highcharts-input-group rect{ 
+  fill: #FFFFFF!important;
+}
+
+
+
+.scale{border:1px solid #333; height:2px} 
+.scale_container{position:relative; height:40px;} 
+.ee_scale_ig{border:4px solid #6423a0; height:2px} /* economic env scale*/
+.ee_scale_rec{border:4px solid #8cc800; height:2px}
+.ee_scale_nig_1{border:4px solid #1450D2; height:2px}
+.ee_scale_nig_2{border:4px solid #4373db; height:2px}
+.ee_scale_nig_3{border:4px solid #7195e3; height:2px}
+.ee_scale_nig_4{border:4px solid #a0b8ec; height:2px}
+.ee_scale_nig_5{border:4px solid #d0dcf6; height:2px}
+.ee_scale_nig_6{border:4px solid #1450D2; height:2px}
+
+.highcharts-tooltip{font-family: 'InvescoInterstateRegular', verdana;}
+
+@media (max-width: 1024px) {
+.highcharts-input-group {
+    display: none !important;
+}
+}
+
+
+
+
+

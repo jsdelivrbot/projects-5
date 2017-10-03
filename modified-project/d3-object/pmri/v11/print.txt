@@ -1,0 +1,15 @@
+<script src="<?= base_url('assets/js/jQuery.print.js'); ?>"></script>
+<button  class="btn btn-info pull-right print-link print" onclick="printDiv('printableArea')">
+      Print page
+</button>
+<div class="row new_cv_list"   id="printableArea">
+<script>     
+    function printDiv(printableArea) {
+            var printContents = document.getElementById(printableArea).innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    
+</script>

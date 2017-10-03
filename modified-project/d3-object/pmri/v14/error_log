@@ -1,0 +1,18 @@
+[03-Aug-2017 06:15:16 UTC] PHP Notice:  Undefined index: ticker in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 108
+[03-Aug-2017 06:15:16 UTC] PHP Warning:  file_get_contents(https://api.intrinio.com/companies?identifier=): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 125
+[03-Aug-2017 06:15:16 UTC] PHP Warning:  file_get_contents(https://api.intrinio.com/prices?identifier=): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
+ in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 126
+[03-Aug-2017 06:15:17 UTC] PHP Warning:  file_get_contents(https://api.intrinio.com/historical_data?identifier=&amp;item=totalrevenue): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
+ in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 127
+[03-Aug-2017 06:15:17 UTC] PHP Warning:  file_get_contents(https://api.intrinio.com/data_point?identifier=&amp;item=price_date,close_price,percent_change,open_price,high_price,low_price): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
+ in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 129
+[03-Sep-2017 08:57:18 UTC] PHP Notice:  Undefined index: ticker in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 108
+[03-Sep-2017 08:57:18 UTC] PHP Warning:  file_get_contents(https://api.intrinio.com/companies?identifier=): failed to open stream: HTTP request failed! HTTP/1.1 404 Not Found
+ in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 125
+[03-Sep-2017 08:57:18 UTC] PHP Warning:  file_get_contents(https://api.intrinio.com/prices?identifier=): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
+ in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 126
+[03-Sep-2017 08:57:18 UTC] PHP Warning:  file_get_contents(https://api.intrinio.com/historical_data?identifier=&amp;item=totalrevenue): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
+ in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 127
+[03-Sep-2017 08:57:19 UTC] PHP Warning:  file_get_contents(https://api.intrinio.com/data_point?identifier=&amp;item=price_date,close_price,percent_change,open_price,high_price,low_price): failed to open stream: HTTP request failed! HTTP/1.1 400 Bad Request
+ in /home/duffyoungcp/public_html/modified-project/d3-object/pmri/v14/stock.php on line 129

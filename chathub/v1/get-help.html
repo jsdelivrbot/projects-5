@@ -1,0 +1,447 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="keywords" content="admin template, admin dashboard, inbox templte, calendar template, form validation">
+<meta name="author" content="DazeinCreative">
+<meta name="description" content="ORB - Powerfull and Massive Admin Dashboard Template with tonns of useful features">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scotia Advice Hub</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.jpg" />
+<link rel="stylesheet" type="text/css" href="css/frontend.css">
+<script type="text/javascript" src="js/vendors/modernizr/modernizr.custom.js"></script>
+</head>
+
+<body>
+<div class="smooth-overflow frontend"> 
+  
+  <!--Navigation-->
+  
+  <nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid"> 
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>-->
+        <a class="navbar-brand text-blue" href="#" style="padding:0;"><img style="max-width:100%;" src="images/scotia-logo.png" alt=""></a> </div>
+      
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <!--<ul class="nav navbar-nav">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="portfolio.html">Portfolio</a></li>
+              <li><a href="portfolio-item.html">Project</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="blog-post.html">Blog Post</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="faq.html">Faq</a></li>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="services.html">Services</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="registration.html">Registration</a></li>
+              <li><a href="countdown.html">CountDown</a></li>
+              <li><a href="contacts.php">Contact Us</a></li>
+            </ul>
+          </li>
+          <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">eCommerce<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="products.html">Products</a></li>
+              <li><a href="products-checkout.html">Checkout</a></li>
+              <li><a href="product.html">Pruduct Page</a></li>
+            </ul>
+          </li>
+        </ul>-->
+        
+        <!--Sign In Form-->
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown" id="menuLogin"> <a class="dropdown-toggle" href="#" data-toggle="dropdown" id="navLogin">Sign In</a>
+            <div class="dropdown-menu">
+              <form action="index.html" id="login-form" class="orb-form">
+                <fieldset>
+                  <section>
+                    <div class="row">
+                      <div class="col col-12">
+                        <label class="input"> <i class="icon-append fa fa-user"></i>
+                          <input type="email" name="email" placeholder="Login">
+                        </label>
+                      </div>
+                    </div>
+                  </section>
+                  <section>
+                    <div class="row">
+                      <div class="col col-12">
+                        <label class="input"> <i class="icon-append fa fa-lock"></i>
+                          <input type="password" name="password" placeholder="Password">
+                        </label>
+                        <div class="note"><a href="#" class="modal-opener">Forgot password?</a></div>
+                      </div>
+                    </div>
+                  </section>
+                  <section>
+                    <div class="row">
+                      <div class="col col-12">
+                        <label class="checkbox">
+                          <input type="checkbox" name="remember" checked>
+                          <i></i>Keep me logged in</label>
+                      </div>
+                    </div>
+                  </section>
+                </fieldset>
+                <button type="submit" class="btn btn-default">Sign in</button>
+                <a href="registration.html" class="btn">Register</a>
+              </form>
+            </div>
+          </li>
+        </ul>
+        <!--/Sign In Form--> 
+      </div>
+      <!-- /.navbar-collapse --> 
+    </div>
+    <!-- /.container-fluid --> 
+  </nav>
+  
+  <!--/Navigation--> 
+  
+  <!--Breadcrumb-->
+  <div class="container">
+    <div class="row">
+      <div class="breadcrumb clearfix">
+        <ul>
+          <li><a href="index.html"><i class="fa fa-home"></i></a></li>
+          <li><a href="index.html">Dashboard</a></li>
+          <li class="active">Data</li>
+        </ul>
+        
+        <!--Search-->
+        <div class="site-search pull-right">
+          <form action="#" id="inline-search">
+            <i class="fa fa-search"></i>
+            <input type="search" placeholder="Search">
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--/Breadcrumb-->
+  
+  <div class="container frontend">
+    <div class="row">
+    
+      <div class="page-header" style="float:left; width:100%; border-bottom:none; padding-bottom:0;">
+      	<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-3">
+            <form class="navbar-form" role="search">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Please Type Your Topic Name.." name="q">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i> Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="row">
+      	<div style="border-bottom:10px solid #f0f0ed; float:left; width:100%;"></div>
+      </div>
+      <!--Experts Block-->
+      <div class="col-sm-6 col-md-6 col-lg-6">
+      	  <div class="text-widget">
+          <h3>Meet Our Experts</h3>
+          </div>
+          <div class="team-carousel margin-negative-right-left-10px"> 
+            
+            <!--Team Carousel-->
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+              <ol class="carousel-indicators">
+                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="item active"> 
+                
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/MikeC.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Mike Capombassis</h4>
+                              <span>CFA</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/sonia_jun17-1024x683.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Sonia Wang</h4>
+                              <span>Diploma in Business</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/gautami_jun17-min-1.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Gautami Nair</h4>
+                              <span>BComm</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/MikeC.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Mike Capombassis</h4>
+                              <span>CFA</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/sonia_jun17-1024x683.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Sonia Wang</h4>
+                              <span>Diploma in Business</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/gautami_jun17-min-1.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Gautami Nair</h4>
+                              <span>BComm</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="item"> 
+                  
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/gautami_jun17-min-1.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Gautami Nair</h4>
+                              <span>BComm</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/sonia_jun17-1024x683.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Sonia Wang</h4>
+                              <span>Diploma in Business</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/MikeC.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Mike Capombassis</h4>
+                              <span>CFA</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/gautami_jun17-min-1.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Gautami Nair</h4>
+                              <span>BComm</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/sonia_jun17-1024x683.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Sonia Wang</h4>
+                              <span>Diploma in Business</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="other-team-member-block hover-animation">
+                    	<a href="chat.html">
+                          <figure> <img class="img-rounded" src="images/MikeC.jpg" alt="img01">
+                            <figcaption>
+                              <h4 style="font-size:12px;">Mike Capombassis</h4>
+                              <span>CFA</span></figcaption>
+                          </figure>
+                      	</a>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+              <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left"></span> </a> <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right"></span> </a> </div>
+            <!--/Team Carousel--> 
+            
+          </div>
+      </div>
+      
+      <!--Blog Block-->
+      <div class="col-sm-6 col-md-6 col-lg-6">
+      	<div class="text-widget">
+          <h3>Related Posts</h3>
+          <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                  <div class="hover-fader"> <a href="chat.html"><img class="img-responsive" src="http://placehold.it/1024x768" alt="Gallery Item" /></a></div>
+                  <div class="caption">
+                    <h4>Blog Item</h4>
+                    <div class="date-captured">Date : 01.07.2014</div>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.  Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+                    <a href="" style="color:#F00;">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                  <div class="hover-fader"> <a href="chat.html"><img class="img-responsive" src="http://placehold.it/1024x768" alt="Gallery Item" /></a></div>
+                  <div class="caption">
+                    <h4>Blog Item</h4>
+                    <div class="date-captured">Date : 01.07.2014</div>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.  Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+                    <a href="" style="color:#F00;">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                  <div class="hover-fader"> <a href="chat.html"><img class="img-responsive" src="http://placehold.it/1024x768" alt="Gallery Item" /></a></div>
+                  <div class="caption">
+                    <h4>Blog Item</h4>
+                    <div class="date-captured">Date : 01.07.2014</div>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.  Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+                    <a href="" style="color:#F00;">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                  <div class="hover-fader"> <a href="chat.html"><img class="img-responsive" src="http://placehold.it/1024x768" alt="Gallery Item" /></a></div>
+                  <div class="caption">
+                    <h4>Blog Item</h4>
+                    <div class="date-captured">Date : 01.07.2014</div>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.  Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+                    <a href="" style="color:#F00;">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                  <div class="hover-fader"> <a href="chat.html"><img class="img-responsive" src="http://placehold.it/1024x768" alt="Gallery Item" /></a></div>
+                  <div class="caption">
+                    <h4>Blog Item</h4>
+                    <div class="date-captured">Date : 01.07.2014</div>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.  Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+                    <a href="" style="color:#F00;">Read More</a>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="thumbnail">
+                  <div class="hover-fader"> <a href="chat.html"><img class="img-responsive" src="http://placehold.it/1024x768" alt="Gallery Item" /></a></div>
+                  <div class="caption">
+                    <h4>Blog Item</h4>
+                    <div class="date-captured">Date : 01.07.2014</div>
+                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam.  Nullam id dolor id nibh ultricies vehicula ut id elit. </p>
+                    <a href="" style="color:#F00;">Read More</a>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <!-- /Content--> 
+    </div>
+  </div>
+  <!-- Page Ends --> 
+
+  <!--Footer-->
+  <div class="footer">
+    
+    <div class="col-md-12 margin-top">
+      <p class="text-center">Copyright &copy; 2017 All right reserved<strong>Scotia Bank</strong></p>
+    </div>
+    
+    <!-- Social Media Buttons - CSS3 - Free to Remove Unneeded -->
+    <div class="social-buttons">
+      <ul class="social">
+        <li><a href="http://facebook.com/"><i class="entypo-facebook-circled"></i></a></li>
+        <li><a href="http://linkedin.com/"><i class="entypo-linkedin-circled"></i></a></li>
+        <li><a href="http://google.com/"><i class="entypo-gplus-circled"></i></a></li>
+        <li><a href="http://twitter.com/"><i class="entypo-twitter-circled"></i></a></li>
+        <li><a href="http://pinterest.com/"><i class="entypo-pinterest-circled"></i></a></li>
+        <li><a href="http://tumblr.com/"><i class="entypo-tumblr-circled"></i></a></li>
+        <li><a href="http://stumbleupon.com/"><i class="entypo-stumbleupon-circled"></i></a></li>
+        <li><a href="http://dribble.com/"><i class="entypo-dribbble-circled"></i></a></li>
+        <li><a href="http://vimeo.com/"><i class="entypo-vimeo-circled"></i></a></li>
+        <li><a href="http://mixi.com/"><i class="entypo-mixi"></i></a></li>
+        <li><a href="http://lastfm.com/"><i class="entypo-lastfm-circled"></i></a></li>
+        <li><a href="http://instagram.com/"><i class="entypo-instagram"></i></a></li>
+        <li><a href="http://vk.com/"><i class="entypo-vkontakte"></i></a></li>
+        <li><a href="http://flickr.com/"><i class="entypo-flickr-circled"></i></a></li>
+      </ul>
+    </div>
+    <!--/Social Buttons--> 
+  </div>
+  <!--Footer--> 
+</div>
+
+<!-- scroll top -->
+<div class="scroll-top-wrapper hidden-xs"> <i class="fa fa-angle-up"></i> </div>
+<!-- /scroll top --> 
+
+<!--Scripts-->
+<script type="text/javascript" src="js/vendors/jquery/jquery.min.js"></script> 
+
+<!--BS-->
+<script type="text/javascript" src="js/vendors/bootstrap/bootstrap.min.js"></script>
+
+<!--Quotes Rotator--> 
+<script type="text/javascript" src="js/vendors/quotes-rotator/jquery.cbpQTRotator.min.js"></script> 
+
+<!--Forms--> 
+<script type="text/javascript" src="js/vendors/forms/jquery.form.min.js"></script> 
+<script type="text/javascript" src="js/vendors/forms/jquery.validate.min.js"></script> 
+<script type="text/javascript" src="js/vendors/forms/jquery.maskedinput.min.js"></script> 
+
+
+<!--Main Script--> 
+<script type="text/javascript" src="js/frontend.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.anychart.com/js/7.13.0/anychart-bundle.min.js"></script>
+        
+        
+        <script src="data.js"></script>
+        
+        
+        <title>Box and Whisker Chart</title>
+        <style>
+         html, body, #container {
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             padding: 0;
+         }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script type="text/javascript">
+         
+anychart.onDocumentReady(function () {
+    // create box chart
+    chart = anychart.box();
+
+    // set container id for the chart
+    chart.container('container');
+
+    // set chart title text settings
+    chart.title('Relative performance by year (net of fees)');
+
+    // set axes settings
+    chart.xAxis().staggerMode(true);
+
+    // The data used in this sample can be obtained from the CDN
+    // http://cdn.anychart.com/samples-data/box-chart/box-and-whisker-chart/data.js
+    // create box chart series
+    var series = chart.box(getData());
+    series.whiskerWidth('20%');
+
+    // initiate chart drawing
+    chart.draw();
+});
+    
+        </script>
+    </body>
+</html>

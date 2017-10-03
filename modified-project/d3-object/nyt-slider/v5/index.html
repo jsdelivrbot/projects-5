@@ -1,0 +1,1254 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style1.scss">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="d3.v4.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.scss">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+
+    <style>
+        body {
+            background-color: #fff;
+            font-family: 'MyFont', serif;
+            color: #5F5F5F;
+        }
+
+
+        @font-face {
+            font-family: "MyFont";
+            src: url('fonts/PTF55F.ttf') format("truetype");
+        }
+        @font-face{
+            font-family: "graph";
+            src: url('fonts/NotoSans-Italic.ttf') format("truetype");
+        }
+        /* Style the tab */
+
+        svg {
+            padding-left: 10px;
+        }
+
+        line.track {
+            stroke: #fff;
+        }
+        a{
+            color: #6F95AD;
+        }
+        */ ul {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+        /* Style the buttons inside the tab */
+
+        ul li {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            
+            transition: 0.3s;
+            font-size: 17px;
+        }
+        /* Change background color of buttons on hover */
+
+        ul li:hover {
+            background-color: #ddd;
+        }
+        /* Create an active/current tablink class */
+
+        ul li .active {
+            background-color: #ccc;
+            color: black;
+            font-weight: bold;
+        }
+        /* Style the tab content */
+
+        .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            -webkit-animation: fadeEffect 1s;
+            animation: fadeEffect 1s;
+        }
+        /* Fade in tabs */
+
+        @-webkit-keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeEffect {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        #slider {
+            width: 460px;
+            background-color: #539997;
+        }
+
+        #sliderYear {
+            width: 435px;
+            background-color: #5F5F5F;
+        }
+        #sliderYear2 {
+            width: 435px;
+            background-color: #5F5F5F;
+        }
+        #sliderYear3 {
+            width: 435px;
+            background-color: #5F5F5F;
+        }
+
+        #slider2 {
+            width: 460px;
+            background-color: #539997;
+        }
+
+        #slider3 {
+            width: 460px;
+            background-color: #539997;
+        }
+
+        #sliderdiv {
+            padding-left: 30px;
+        }
+
+        #sliderdiv2 {
+            padding-left: 30px;
+        }
+
+        #sliderdiv3 {
+            padding-left: 30px;
+        }
+
+        .handle {
+            /*53abaf*/
+            fill: #53abaf;
+            stroke: #000;
+            stroke-opacity: 0.5;
+            stroke-width: 1.25px;
+            cursor: ew-resize;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        label {
+            font-size: 1.8vw;
+        }
+
+        .rotate {
+
+            /* Safari */
+            -webkit-transform: rotate(-90deg);
+
+            /* Firefox */
+            -moz-transform: rotate(-90deg);
+
+            /* IE */
+            -ms-transform: rotate(-90deg);
+
+            /* Opera */
+            -o-transform: rotate(-90deg);
+
+            /* Internet Explorer */
+            filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+        }
+
+
+        .tick {
+            color: white;
+        }
+/*
+        .axisRed line{
+          stroke: #FF5247;
+        }
+
+        .axisRed path{
+          stroke: red;
+        }
+
+        .axisRed text{
+          fill: #FF5247;
+        }  */
+    </style>
+
+
+    <script>
+        function openComp(evt, compName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("link");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(compName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12" style="text-align: center; margin-bottom: 20px;">
+                <h3 style="font-weight: bold; font-family: 'MyFont', serif; color: #5F5F5F; font-size: 250%">Participation model slider </h3>
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a class="link active" onclick="openComp(event, 'usPro')" href="#US_22" aria-controls="home" role="tab" data-toggle="tab" style="font-family: 'MyFont', serif; ">US.22</a></li>
+                    <li role="presentation"><a class="link" onclick="openComp(event, 'dwPro')" href="#DwDL" aria-controls="profile" role="tab" data-toggle="tab" style="font-family: 'MyFont', serif;">Dw DL</a></li>
+                    <li role="presentation"><a class="link" onclick="openComp(event, 'odnPro')" href="#ODN" aria-controls="messages" role="tab" data-toggle="tab" style="font-family: 'MyFont', serif; ">Tokyo</a></li>
+
+                </ul>
+            </div>
+
+            <div id="usPro" class="tabcontent" style="display:block;">
+                <!-- <h3>US 22</h3> -->
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <!-- <div id="test"></div> -->
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px; font-family: 'MyFont', serif; ">
+                        Amount Invested
+
+                    </div>
+                    <div class="form-group">
+                        <b><input class="form-control" class="number" id="us" type="text" name="" style="font-family: 'MyFont', serif; color: black; background-color: #B4CCD9; padding-top: 5px; font-size: 150%; text-align: center; height: 50px;" onchange="myFunction(this.value)" value="$100,000"></b>
+                    </div>
+                    <div class="form-group" style="font-family: 'MyFont', serif;  font-weight: bold; text-align: center; font-size: 20px;">
+                        Current MGMT Fee<br>
+                        <span style="font-family: 'MyFont', serif; color: white; font-size: 50px; color: #0F2747;" id="uscmper">0.85%</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    
+
+                    <div id="svg" class="g-parameter-tip" ></div>
+         
+                    <div class="range-slider" style="padding-left: 50px;"><input class="range-slider__range" id="sliderYear" type="range" min="1" max="20" step="1" value="1" /></div>
+                     <div id="year" style="padding-left: 230px;"><b>slide to vary # of years</b></div>
+                    
+                    <div id="svg1" ></div>
+
+
+                    <div class="range-slider" style="padding-left: 40px;">
+					  <input class="range-slider__range" id="slider" type="range" value="0"  min="1" max="200" step="1">
+					  <!-- <span class="range-slider__value">0</span> -->
+					</div>
+                    <!-- <div id="sliderdiv"><input  type="range" min="1" max="200" step="1" value="50" /></div> -->
+                    <div id="year" style="font-family: 'graph', serif;"><center><b><label style="font-size:100%; color: black;">slide to vary growth rate</label></b><br>
+                    <label style="font-size:100%; color: black;">(of Bristol Gate, the private asset management company, from a starting base of 1)</label></center></div>
+                    <!-- <div id="year" style="padding-left: 300px;"><b></b></div> -->
+                    <br>
+                    <br>
+                </div>
+
+
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-group" style=" font-family: 'MyFont', serif;font-weight: bold; text-align: center; font-size: 20px;">
+                        Saved
+
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control" id="uspmg" type="text" name="" style="font-family: 'MyFont', serif; color: white; background-color: #B4CCD9; font-size: 200%; text-align: center; height: 50px; color: black;">$50,000</label>
+                        <!-- <span id="uspmg">…</span> -->
+                    </div>
+
+                    <div class="form-group" style="font-family: 'MyFont', serif; font-weight: bold; text-align: center; font-size: 20px;">
+                        Predicted MGMT Fee<br>
+                        <span style="font-family: 'MyFont', serif;  font-size: 50px; color: #0F2747;" id="uspmper">0.85%</span>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- 2nd tab -->
+
+            <div id="dwPro" class="tabcontent">
+                <!-- <h3>US 22</h3> -->
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <!-- <div id="test"></div> -->
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px; font-family: 'MyFont', serif; ">
+                        Amount Invested
+
+                    </div>
+                    <div class="form-group">
+                        <b><input class="form-control" class="number" id="dw" type="text" name="" style="font-family: 'MyFont', serif; color: black; background-color: #B4CCD9; padding-top: 5px; font-size: 150%; text-align: center; height: 50px;" onchange="myFunction2(this.value)" value="$100,000"></b>
+                    </div>
+                    <div class="form-group" style="font-family: 'MyFont', serif;  font-weight: bold; text-align: center; font-size: 20px;">
+                        Current MGMT Fee<br>
+                        <span style="font-family: 'MyFont', serif; color: white; font-size: 50px; color: #0F2747;" id="dwcmper">0.85%</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    
+
+                    <div id="svg2" class="g-parameter-tip" ></div>
+         
+                    <div class="range-slider" style="padding-left: 50px;"><input class="range-slider__range" id="sliderYear2" type="range" min="1" max="20" step="1" value="1" /></div>
+                     <div id="year" style="padding-left: 230px;"><b>slide to vary # of years</b></div>
+                    
+                    <div id="svg12" ></div>
+
+
+                    <div class="range-slider" style="padding-left: 40px;">
+                      <input class="range-slider__range" id="slider2" type="range" value="0"  min="1" max="200" step="1">
+                      <!-- <span class="range-slider__value">0</span> -->
+                    </div>
+                    <!-- <div id="sliderdiv"><input  type="range" min="1" max="200" step="1" value="50" /></div> -->
+                    <div id="year" style="font-family: 'graph', serif;"><center><b><label style="font-size:100%; color: black;">slide to vary growth rate</label></b><br>
+                    <label style="font-size:100%; color: black;">(of Bristol Gate, the private asset management company, from a starting base of 1)</label></center></div>
+                    <!-- <div id="year" style="padding-left: 300px;"><b></b></div> -->
+                    <br>
+                    <br>
+                </div>
+
+
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-group" style=" font-family: 'MyFont', serif;font-weight: bold; text-align: center; font-size: 20px;">
+                        Saved
+
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control" id="dwpmg" type="text" name="" style="font-family: 'MyFont', serif; color: white; background-color: #B4CCD9; font-size: 200%; text-align: center; height: 50px; color: black;">$50,000</label>
+                        <!-- <span id="uspmg">…</span> -->
+                    </div>
+
+                    <div class="form-group" style="font-family: 'MyFont', serif; font-weight: bold; text-align: center; font-size: 20px;">
+                        Predicted MGMT Fee<br>
+                        <span style="font-family: 'MyFont', serif;  font-size: 50px; color: #0F2747;" id="dwpmper">0.85%</span>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <!-- 3rd tab -->
+
+            <div id="odnPro" class="tabcontent" >
+                <!-- <h3>US 22</h3> -->
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <!-- <div id="test"></div> -->
+                    <div class="form-group" style="font-weight: bold; text-align: center; font-size: 20px; font-family: 'MyFont', serif; ">
+                        Amount Invested
+
+                    </div>
+                    <div class="form-group">
+                        <b><input class="form-control" class="number" id="odn" type="text" name="" style="font-family: 'MyFont', serif; color: black; background-color: #B4CCD9; padding-top: 5px; font-size: 150%; text-align: center; height: 50px;" onchange="myFunction3(this.value)" value="$100,000"></b>
+                    </div>
+                    <div class="form-group" style="font-family: 'MyFont', serif;  font-weight: bold; text-align: center; font-size: 20px;">
+                        Current MGMT Fee<br>
+                        <span style="font-family: 'MyFont', serif; color: white; font-size: 50px; color: #0F2747;" id="odncmper">0.85%</span>
+                    </div>
+                </div>
+
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    
+
+                    <div id="svg3" class="g-parameter-tip" ></div>
+         
+                    <div class="range-slider" style="padding-left: 50px;"><input class="range-slider__range" id="sliderYear3" type="range" min="1" max="20" step="1" value="1" /></div>
+                     <div id="year" style="padding-left: 230px;"><b>slide to vary # of years</b></div>
+                    
+                    <div id="svg13" ></div>
+
+
+                    <div class="range-slider" style="padding-left: 40px;">
+                      <input class="range-slider__range" id="slider3" type="range" value="0"  min="1" max="200" step="1">
+                      <!-- <span class="range-slider__value">0</span> -->
+                    </div>
+                    <!-- <div id="sliderdiv"><input  type="range" min="1" max="200" step="1" value="50" /></div> -->
+                    <div id="year" style="font-family: 'graph', serif;"><center><b><label style="font-size:100%; color: black;">slide to vary growth rate</label></b><br>
+                    <label style="font-size:100%; color: black;">(of Bristol Gate, the private asset management company, from a starting base of 1)</label></center></div>
+                    <!-- <div id="year" style="padding-left: 300px;"><b></b></div> -->
+                    <br>
+                    <br>
+                </div>
+
+
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="form-group" style=" font-family: 'MyFont', serif;font-weight: bold; text-align: center; font-size: 20px;">
+                        Saved
+
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control" id="odnpmg" type="text" name="" style="font-family: 'MyFont', serif; color: white; background-color: #B4CCD9; font-size: 200%; text-align: center; height: 50px; color: black;">$50,000</label>
+                        <!-- <span id="uspmg">…</span> -->
+                    </div>
+
+                    <div class="form-group" style="font-family: 'MyFont', serif; font-weight: bold; text-align: center; font-size: 20px;">
+                        Predicted MGMT Fee<br>
+                        <span style="font-family: 'MyFont', serif;  font-size: 50px; color: #0F2747;" id="odnpmper">0.85%</span>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+        <script type="text/javascript">
+            $('input#us').keyup(function(event) {
+
+                // skip for arrow keys
+                if (event.which >= 37 && event.which <= 40) return;
+
+                // format number
+                $(this).val(function(index, value) {
+                    value = value
+                        .replace(/\D/g, "")
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    return "$" + value;
+                });
+            });
+
+            $('input#dw').keyup(function(event) {
+
+                // skip for arrow keys
+                if (event.which >= 37 && event.which <= 40) return;
+
+                // format number
+                $(this).val(function(index, value) {
+                    value = value
+                        .replace(/\D/g, "")
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    return "$" + value;
+                });
+            });
+
+            $('input#odn').keyup(function(event) {
+
+                // skip for arrow keys
+                if (event.which >= 37 && event.which <= 40) return;
+
+                // format number
+                $(this).val(function(index, value) {
+                    value = value
+                        .replace(/\D/g, "")
+                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    return "$" + value;
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+        
+        var width = 500,
+        height = 250,
+        padding = 16;
+
+    var svg = d3.select("#svg")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    // //2nd bsr chat
+
+    var svg1 = d3.select("#svg1")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", 26);
+
+    //Dq Do
+    var svg2 = d3.select("#svg2")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    // //2nd bsr chat
+
+    var svg12 = d3.select("#svg12")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", 26);
+
+
+    //odn
+    var svg3 = d3.select("#svg3")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+    // //2nd bsr chat
+
+    var svg13 = d3.select("#svg13")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", 26);
+
+
+
+    var data = d3.range(1, 21);
+    var data2 = d3.range(1, 21);
+    var data3 = d3.range(1, 21);
+
+    //2nd
+    var data1 = d3.range(1,1000);
+    var sclData = [];
+
+    var data12 = d3.range(1,1000);
+    var sclData2 = [];
+
+    var data13 = d3.range(1,1000);
+    var sclData3 = [];
+    var i;
+   
+
+    var xScale = d3.scaleBand()
+        .domain(data)
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    // //2nd
+    var xScale1 = d3.scaleBand()
+        .domain([10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190])
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    var yScale = d3.scaleLinear()
+        .domain([0, 10e6])
+        .range([height - padding, padding]);
+        // .tickFormat(d3.format(".0s");
+
+
+    //dwd
+    var xScale2 = d3.scaleBand()
+        .domain(data)
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    // //2nd
+    var xScale12 = d3.scaleBand()
+        .domain([10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190])
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    var yScale2 = d3.scaleLinear()
+        .domain([0, 10e6])
+        .range([height - padding, padding]);
+
+
+    //odn
+    var xScale3 = d3.scaleBand()
+        .domain(data)
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    // //2nd
+    var xScale13 = d3.scaleBand()
+        .domain([10,20,30,40,50,60,70,80,90,100,110,120,130,140,150,160,170,180,190])
+        .range([padding * 2, width - padding])
+        .padding(0.2);
+
+    var yScale3 = d3.scaleLinear()
+        .domain([0, 10e6])
+        .range([height - padding, padding]);
+
+    // //2nd
+    // var yScale1 = d3.scaleLinear()
+    var tac = d3.select("#sliderYear").node().value;
+    var t2  = Math.round(tac);
+    var bars = svg.selectAll(".bars")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", d => xScale(d))
+        .attr("width", xScale.bandwidth())
+        .attr("y", d => yScale(d*0.5e6))
+        .attr("height", d => height - padding - yScale(d*0.5e6))
+        .attr("fill", (d => t2 == d ? "#539997" : "#e0e0e0"));
+
+    var tac2 = d3.select("#sliderYear2").node().value;
+    var t22  = Math.round(tac2);
+    var bars2 = svg2.selectAll(".bars")
+        .data(data2)
+        .enter()
+        .append("rect")
+        .attr("x", d => xScale(d))
+        .attr("width", xScale2.bandwidth())
+        .attr("y", d => yScale(d*0.5e6))
+        .attr("height", d => height - padding - yScale(d*0.5e6))
+        .attr("fill", (d => t22 == d ? "#539997" : "#e0e0e0"));
+
+    var tac3 = d3.select("#sliderYear3").node().value;
+    var t23  = Math.round(tac3);
+    var bars3 = svg3.selectAll(".bars")
+        .data(data3)
+        .enter()
+        .append("rect")
+        .attr("x", d => xScale(d))
+        .attr("width", xScale3.bandwidth())
+        .attr("y", d => yScale(d*0.5e6))
+        .attr("height", d => height - padding - yScale(d*0.5e6))
+        .attr("fill", (d => t23 == d ? "#539997" : "#e0e0e0"));
+
+    // //2nd
+
+
+    var xAxis = d3.axisBottom(xScale);
+
+    var yAxis = d3.axisLeft(yScale)
+                .ticks(5)
+                .tickFormat(d3.format("$.0s"));
+
+    //dwd
+    var xAxis2 = d3.axisBottom(xScale2);
+
+    var yAxis2 = d3.axisLeft(yScale2)
+                    .ticks(5)
+                .tickFormat(d3.format("$.0s"));
+
+    //odn
+    var xAxis3 = d3.axisBottom(xScale3);
+
+    var yAxis3 = d3.axisLeft(yScale3)
+                    .ticks(5)
+                .tickFormat(d3.format("$.0s"));
+
+
+
+    // //2nd
+     var xAxis1 = d3.axisBottom(xScale1)
+                    .ticks(10);
+     var xAxis12 = d3.axisBottom(xScale12)
+                    .ticks(10);
+     var xAxis13 = d3.axisBottom(xScale13)
+                        .ticks(10);
+
+
+     //dwd
+ 
+
+    var gX = svg.append("g")
+        .attr("transform", "translate(0," + (height - padding) + ")")
+        .call(xAxis);
+
+    //2nd
+    var gX1 = svg1.append("g")
+        .attr("transform", "translate(0," + (26 - 16) + ")")
+        .call(xAxis1);
+
+
+
+    var gY = svg.append("g")
+        .attr("transform", "translate(" + padding * 2 + ",0)")
+        .call(yAxis);
+
+
+
+        //dwd
+
+    var gX2 = svg2.append("g")
+        .attr("transform", "translate(0," + (height - padding) + ")")
+        .call(xAxis2);
+
+    //2nd
+    var gX12 = svg12.append("g")
+        .attr("transform", "translate(0," + (26 - 16) + ")")
+        .call(xAxis12);
+
+
+
+    var gY2 = svg2.append("g")
+        .attr("transform", "translate(" + padding * 2 + ",0)")
+        .call(yAxis2);
+    
+
+    //odn
+
+    var gX3 = svg3.append("g")
+        .attr("transform", "translate(0," + (height - padding) + ")")
+        .call(xAxis3);
+
+    //2nd
+    var gX13 = svg13.append("g")
+        .attr("transform", "translate(0," + (26 - 16) + ")")
+        .call(xAxis13);
+
+
+
+    var gY3 = svg3.append("g")
+        .attr("transform", "translate(" + padding * 2 + ",0)")
+        .call(yAxis3);
+
+
+    
+
+
+    function numberWithCommas(x) {
+    return x.toString().replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+
+
+    // //2nd
+    var annu = d3.select("#slider").node().value;
+    //d3.select("#agr").text(annu+"%");
+    var year = d3.select("#sliderYear").node().value;
+    var cmg = d3.select("#us").node().value;
+    cmg = cmg.replace('$','');
+    cmg = cmg.toString().replace(/,/g,'');
+    
+    var pmg = Math.round(parseInt(cmg)/year);
+    var checkCmg = cmg;
+    if(pmg.toString().length > 3)
+    pmg = numberWithCommas(pmg);
+    if(checkCmg != 0){
+        d3.select("#uspmg").text("$"+pmg.toString());
+        d3.select('#uscmper').text("0.85%");
+    }
+    else{
+        d3.select("#uspmg").text("$0");
+        d3.select('#uscmper').text("0.85%");
+        d3.select('#uspmper').text("0%");
+    }
+
+    var annu = d3.select("#slider2").node().value;
+    //d3.select("#agr2").text(annu+"%");
+    var year = d3.select("#sliderYear2").node().value;
+    var cmg = d3.select("#dw").node().value;
+    cmg = cmg.replace('$','');
+    cmg = cmg.toString().replace(/,/g,'');
+    
+    var pmg = Math.round(parseInt(cmg)/year);
+    var checkCmg = cmg;
+    if(pmg.toString().length > 3)
+    pmg = numberWithCommas(pmg);
+    if(checkCmg != 0){
+        d3.select("#dwpmg").text("$"+pmg);
+    }
+    else{
+        d3.select("#dwpmg").text("$0");
+        d3.select('#dwcmper').text("0.85%");
+        d3.select('#dwpmper').text("0%");
+    }
+
+
+    var annu = d3.select("#slider3").node().value;
+    //d3.select("#agr3").text(annu+"%");
+    var year = d3.select("#sliderYear3").node().value;
+    var cmg = d3.select("#odn").node().value;
+   cmg = cmg.replace('$','');
+    cmg = cmg.toString().replace(/,/g,'');
+    
+    var pmg = Math.round(parseInt(cmg)/year);
+    var checkCmg = cmg;
+    if(pmg.toString().length > 3)
+    pmg = numberWithCommas(pmg);
+    if(checkCmg != 0){
+        d3.select("#odnpmg").text("$"+pmg);
+        //d3.select('#dwcmper').text("0%");
+    }
+    else{
+        d3.select("#odnpmg").text("$0");
+        d3.select('#odncmper').text("0.85%");
+        d3.select('#odnpmper').text("0%");
+    }
+    
+    function myFunction(val) {
+        //alert("The input value has changed. The new value is: " + val);
+        var annu = d3.select("#slider").node().value;
+        var year = d3.select("#sliderYear").node().value;
+        var cmg = d3.select("#us").node().value;
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        d3.select("#test").text(cmg);
+        var pmg = Math.round(cmg/year);
+
+        if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+             if(pmg.toString().length >= 18 && pmg.toString().length <= 20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#uspmg").text("$"+str).style("font-size","180%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 21 && pmg.toString().length <= 23){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#uspmg").text("$"+str).style("font-size","160%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+
+            else{
+
+                d3.select("#uspmg").text("$"+pmg).style("font-size","200%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#uspmg").text("$0").style("font-size","200%");
+            d3.select('#uscmper').text("0.85%");
+            d3.select('#uspmper').text("0.85%");
+        }
+    }
+
+    ////////////////////////////////////////////////           dw         on change
+
+    function myFunction2(val) {
+        //alert("The input value has changed. The new value is: " + val);
+        var annu = d3.select("#slider2").node().value;
+        var year = d3.select("#sliderYear2").node().value;
+        var cmg = d3.select("#dw").node().value;
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        //d3.select("#test").text(cmg);
+        var pmg = Math.round(cmg/year);
+
+        if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+            if(pmg.toString().length >= 18 && pmg.toString().length <= 20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#dwpmg").text("$"+str).style("font-size","180%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 21 && pmg.toString().length <= 23){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#dwpmg").text("$"+str).style("font-size","160%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+            
+
+            else{
+
+                d3.select("#dwpmg").text("$"+pmg).style("font-size","200%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#dwpmg").text("$0").style("font-size","200%");
+            d3.select('#dwcmper').text("0.85%");
+            d3.select('#dwpmper').text("0%");
+        }
+    }
+
+    ////////////////////////////////////// odn on change
+    function myFunction3(val) {
+        //alert("The input value has changed. The new value is: " + val);
+        var annu = d3.select("#slider3").node().value;
+        var year = d3.select("#sliderYear3").node().value;
+        var cmg = d3.select("#odn").node().value;
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        d3.select("#test").text(cmg);
+        var pmg = Math.round(cmg/year);
+
+        if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+            if(pmg.toString().length >= 18 && pmg.toString().length <=20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#odnpmg").text("$"+str).style("font-size","180%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 15 && pmg.toString().length < 17){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#odnpmg").text("$"+str).style("font-size","160%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+            
+            else{
+
+                d3.select("#odnpmg").text("$"+pmg).style("font-size","200%");
+                 d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#odnpmg").text("$0").style("font-size","200%");
+            d3.select('#odncmper').text("0.85%");
+            d3.select('#odnpmper').text("0%");
+        }
+    }
+
+
+    //////////////////////////////////////////////////////////////////////
+
+    
+
+    d3.select("#sliderYear").on("input", function() {
+        var currentValue = Math.round(this.value);
+        yScale.domain([0, currentValue*0.5e6])
+        yScale.range([height - padding, padding]);
+        //bars.attr("y", d => yScale(d*0.5e6))
+
+            // .attr("height", d => height - padding - yScale(d*0.5e6))
+            bars.attr("fill", (d => currentValue == d ?  "#539997" : "#e0e0e0" ));
+
+         gY.call(yAxis);
+
+        var annu = d3.select("#slider").node().value;
+        var year = d3.select("#sliderYear").node().value;
+        var cmg = d3.select("#us").node().value
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        d3.select("#test").text(cmg);
+        var pmg = Math.round(parseInt(cmg)/year);
+
+        if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+             if(pmg.toString().length >= 18 && pmg.toString().length <= 20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#uspmg").text("$"+str).style("font-size","180%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 21 && pmg.toString().length <= 23){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#uspmg").text("$"+str).style("font-size","160%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+
+            else{
+
+                d3.select("#uspmg").text("$"+pmg).style("font-size","200%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#uspmg").text("$0").style("font-size","200%");
+            d3.select('#uscmper').text("0.85%");
+            d3.select('#uspmper').text("0.85%");
+        }
+
+    })
+
+    //dwd
+    d3.select("#sliderYear2").on("input", function() {
+        var currentValue = Math.round(this.value);
+        yScale2.domain([0, currentValue*0.5e6])
+        // yScale2.range([height - padding, padding]);
+        //bars2.attr("y", d => yScale2(d*0.5e6))
+
+            // .attr("height", d => height - padding - yScale2(d*0.5e6))
+            bars2.attr("fill", (d => currentValue == d ?  "#539997" : "#e0e0e0" ));
+
+        gY2.call(yAxis2);
+
+        var annu = d3.select("#slider2").node().value;
+        var year = d3.select("#sliderYear2").node().value;
+        var cmg = d3.select("#dw").node().value
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        d3.select("#test").text(cmg);
+        var pmg = Math.round(parseInt(cmg)/year);
+
+       if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+            if(pmg.toString().length >= 18 && pmg.toString().length <= 20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#dwpmg").text("$"+str).style("font-size","180%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 21 && pmg.toString().length <= 23){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#dwpmg").text("$"+str).style("font-size","160%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+            
+
+            else{
+
+                d3.select("#dwpmg").text("$"+pmg).style("font-size","200%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#dwpmg").text("$0").style("font-size","200%");
+            d3.select('#dwcmper').text("0.85%");
+            d3.select('#dwpmper').text("0%");
+        }
+
+    })
+    //odn
+    d3.select("#sliderYear3").on("input", function() {
+        var currentValue = Math.round(this.value);
+        yScale3.domain([0, currentValue*0.5e6])
+        yScale3.range([height - padding, padding]);
+        // bars3.attr("y", d => yScale3(d*0.5e6))
+
+            // .attr("height", d => height - padding - yScale3(d*0.5e6))
+            bars3.attr("fill", (d => currentValue == d ?  "#539997" : "#e0e0e0" ));
+
+        gY3.call(yAxis3);
+
+        var annu = d3.select("#slider3").node().value;
+        var year = d3.select("#sliderYear3").node().value;
+        var cmg = d3.select("#odn").node().value
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        d3.select("#test").text(cmg);
+        var pmg = Math.round(parseInt(cmg)/year);
+
+        if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+            if(pmg.toString().length >= 18 && pmg.toString().length <=20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#odnpmg").text("$"+str).style("font-size","180%");
+                d3.select("#odnpmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 15 && pmg.toString().length < 17){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#odnpmg").text("$"+str).style("font-size","160%");
+                d3.select("#odnpmper").text(PredictedMg+"%");
+            }
+            
+            else{
+
+                d3.select("#odnpmg").text("$"+pmg).style("font-size","200%");
+                 d3.select("#odnpmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#odnpmg").text("$0").style("font-size","200%");
+            d3.select('#odncmper').text("0.85%");
+            d3.select('#odnpmper').text("0%");
+        }
+    })
+
+    ///////////////////////////////////////////
+
+    d3.select("#slider").on("input", function() {
+        var currentValue = Math.round(this.value);
+        yScale.domain([0, currentValue/0.0000025])
+        yScale.range([height - padding, padding]);
+        //bars.attr("y", d => yScale(d/0.0000025))
+            //.attr("height", d => height - padding - yScale3(d/0.0000025))
+            //.attr("height", d => height - padding - yScale(d/0.0000025));
+            // .attr("fill", (d => currentValue == d ?  "#539997" : "#e0e0e0" ));
+
+        gY.call(yAxis);
+
+        var annu = d3.select("#slider").node().value;
+        var year = d3.select("#sliderYear").node().value;
+        var cmg = d3.select("#us").node().value
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        d3.select("#test").text(cmg);
+        var pmg = Math.round(parseInt(cmg)/year);
+
+        if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+             if(pmg.toString().length >= 18 && pmg.toString().length <= 20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#uspmg").text("$"+str).style("font-size","180%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 21 && pmg.toString().length <= 23){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#uspmg").text("$"+str).style("font-size","160%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+
+            else{
+
+                d3.select("#uspmg").text("$"+pmg).style("font-size","200%");
+                d3.select("#uspmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#uspmg").text("$0").style("font-size","200%");
+            d3.select('#uscmper').text("0.85%");
+            d3.select('#uspmper').text("0.85%");
+        }
+
+    })
+
+    //dwd
+    d3.select("#slider2").on("input", function() {
+        var currentValue = Math.round(this.value);
+        yScale2.domain([0, currentValue/0.0000025])
+        yScale2.range([height - padding, padding]);
+        //bars2.attr("y", d => yScale2(d/0.0000025))
+
+            //.attr("height", d => height - padding - yScale2(d/0.25e4));
+            // .attr("fill", (d => currentValue == d ?  "#539997" : "#e0e0e0" ));
+
+        gY2.call(yAxis2);
+
+        var annu = d3.select("#slider2").node().value;
+        var year = d3.select("#sliderYear2").node().value;
+        var cmg = d3.select("#dw").node().value
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        d3.select("#test").text(cmg);
+        var pmg = Math.round(parseInt(cmg)/year);
+
+       if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+            if(pmg.toString().length >= 18 && pmg.toString().length <= 20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#dwpmg").text("$"+str).style("font-size","180%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 21 && pmg.toString().length <= 23){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#dwpmg").text("$"+str).style("font-size","160%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+            
+
+            else{
+
+                d3.select("#dwpmg").text("$"+pmg).style("font-size","200%");
+                d3.select("#dwpmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#dwpmg").text("$0").style("font-size","200%");
+            d3.select('#dwcmper').text("0.85%");
+            d3.select('#dwpmper').text("0%");
+        }
+
+    })
+    //odn
+    d3.select("#slider3").on("input", function() {
+        var currentValue = Math.round(this.value);
+        yScale3.domain([0, currentValue/0.0000025])
+        yScale3.range([height - padding, padding]);
+        //bars3.attr("y", d => yScale3(d/0.0000025))
+
+            //.attr("height", d => height - padding - yScale3(d));
+            // .attr("fill", (d => currentValue == d ?  "#539997" : "#e0e0e0" ));
+
+        gY3.call(yAxis3);
+
+        var annu = d3.select("#slider3").node().value;
+        var year = d3.select("#sliderYear3").node().value;
+        var cmg = d3.select("#odn").node().value
+        cmg = cmg.replace(/,/g,'');
+        cmg = cmg.replace('$','');
+        d3.select("#test").text(cmg);
+        var pmg = Math.round(parseInt(cmg)/year);
+
+        if(pmg.toString().length > 3)
+        pmg = numberWithCommas(pmg);
+
+        var PredictedMg = (0.85 - (Math.round(annu / 4.35)/100)).toFixed(2);
+        if(cmg != 0){
+            if(pmg.toString().length >= 18 && pmg.toString().length <=20){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#odnpmg").text("$"+str).style("font-size","180%");
+                d3.select("#odnpmper").text(PredictedMg+"%");
+            }
+            else if(pmg.toString().length >= 15 && pmg.toString().length < 17){
+               // document.getElementById("#uspmg").style.fontSize(100);
+                var str = pmg.toString();
+                //var result = str.fontsize(3);
+                //document.getElementById("demo").innerHTML = pmg.toString().length;
+                d3.select("#odnpmg").text("$"+str).style("font-size","160%");
+                d3.select("#odnpmper").text(PredictedMg+"%");
+            }
+            
+            else{
+
+                d3.select("#odnpmg").text("$"+pmg).style("font-size","200%");
+                 d3.select("#odnpmper").text(PredictedMg+"%");
+            }
+        }
+        else{
+            d3.select("#odnpmg").text("$0").style("font-size","200%");
+            d3.select('#odncmper').text("0.85%");
+            d3.select('#odnpmper').text("0%");
+        }
+    })
+
+
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>

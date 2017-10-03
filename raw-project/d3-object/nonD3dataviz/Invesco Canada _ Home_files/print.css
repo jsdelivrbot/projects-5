@@ -1,0 +1,40 @@
+/*typography*/
+
+*{color:#000000;font-size: 11px;}
+.ivz_table thead{font-size: 11px;}
+.nav-tabs > li > a {font-size: 11px;}
+.ipw_logo {color: #837552; font-size: 24px; position: absolute;top:-50px;right:30px;}
+.interstateBold {font-family: "InvescoInterstateBold",Verdana; font-size: 24px}
+.swiftRegular {font-family: "swiftRegular",Verdana; font-size: 24px}
+.mainContentDisclaim, .ivz_disclaimerMainContent{font-size: 10px !important;}
+body, .ivz_mainBgContainer, .bg_invescoGradient1, .ivz_mainFooter {background-image: url('');background-color: #ffffff !important;}
+.printSizeTBL{background-color: #eeeeee !important;}
+
+/*hide elements*/
+.ivz_MM_barContainer,.ivz_mobileMenu_container,.ivz_mobileMenu_parentItem, .ivz_leftNavContainer,
+ .ivz_topHeader, .ivz_globalSearchInput,.ivz_searchBTN,.ivz_pageControls, #ivz_pageControls_print,
+  .ivz_linkFooter, .breadcrumb, #layerslider,.ivz_pageIntro,.video-container, .ivz_videoContainer, .ivz_disclaimerMainContent, iframe {display:none;}
+
+#pageFootnoteID > .ivz_disclaimerMainContent {display: block;}
+/*mods*/
+hr {margin-top: 5px;margin-bottom: 5px;}
+.printSizeTBL > th {border: none !important;}
+#calPortfolioDiv > table {font-size: 10px !important;}
+.ivz_pageIntro{text-shadow:none;}
+#calPortfolioDiv,.ivz_table tfoot, .table,.table-responsive,.ivz_table{border: none; margin-bottom: 0px !important}
+
+.ivz_notification{border:1px solid #666;}
+.form-control, input, .form-control:focus {border: #FFFFFF; outline: 0; -webkit-box-shadow: none;box-shadow: none;}
+textarea:focus, input:focus{outline: 0;}
+.formPrint{padding: 0 10px 0 10px !important;}
+.printbreak{display:block;page-break-before: always !important;}
+.printsubHeader{font-size: 28px !important;}
+.removeMarginPrint{margin: 0 !important;}
+.ivz_positiveValuePrint > .ivz_positiveValue{font-size: 16px !important; font-weight: bold;}
+.subtitle{font-size:14px !important; margin: 0 !important;}
+.table {margin-bottom: 5px !important;}
+.avoidBreak, tr {page-break-inside: avoid;}
+/*#pageFootnoteID{display:block;page-break-before: always;}*/
+.izv_printColFix{
+  width: 50% !important;
+}

@@ -1,0 +1,4 @@
+https://bl.ocks.org/mbostock/3894205
+https://www.dashingd3js.com/svg-paths-and-d3js
+
+https://www.amcharts.com/demos/smoothed-line-chart/
