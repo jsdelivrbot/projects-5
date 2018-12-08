@@ -28,8 +28,8 @@
     <script src="js/jquery-ui.js"></script>
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
-    <!-- <script type="text/javascript" src="https://cdn.rawgit.com/MrRio/jsPDF/master/dist/jspdf.min.js"></script> -->
-    <script type="text/javascript" src="https://cdn.rawgit.com/niklasvh/html2canvas/0.5.0-alpha2/dist/html2canvas.min.js"></script>
+    <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/MrRio/jsPDF/dist/jspdf.min.js"></script> -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/niklasvh/html2canvas@0.5.0-alpha2/dist/html2canvas.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <script src="https://d3js.org/d3.v4.min.js"></script>
     <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script> -->
